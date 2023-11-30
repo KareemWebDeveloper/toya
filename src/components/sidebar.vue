@@ -3,7 +3,7 @@ import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 import Sidebar from 'primevue/sidebar';
 const { push , currentRoute } = useRouter();
-const isMobExpanded = ref(true)
+const isMobExpanded = ref(false)
 function scrollToSection(sectionId : any) {
     push({path : '/' , hash : `#${sectionId}`})
   const section = document.getElementById(sectionId);
