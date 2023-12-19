@@ -6,6 +6,14 @@ const { push , currentRoute } = useRouter();
 const sections : any = ref([]);
 let observer : any = null;
 let activeSectionId = '';
+
+const tabs = ref([
+    { title: 'نبذة عنا', content: 'الصنعة هي مبادرة تعليمية تهدف إلى تدريب وتطوير مهارات الحرفيين في مختلف المجالات والصناعات اليدوية. تتميز هذه الورشة بمشاركة عدد كبير من الخبراء والمحترفين المتميزين في مجالات متنوعة، مما يسهم في تقديم تجارب وخبرات متنوعة وقيمة للمشاركين. يتم تنظيم ورشة الصنعة بشكل دوري أو عند الطلب، وتشمل مجموعة واسعة من المواضيع مثل النجارة، والخياطة، والفنون التقليدية، والحرف اليدوية المتنوعة مثل الخزف، النحت، النسيج، والأعمال الحرفية الأخرى. باختصار، تُعد "الصنعة" بيئة تعليمية مثالية لتنمية وتطوير مهارات الحرفيين وصقل مواهبهم من خلال تجارب عملية وتوجيهات خبراء متميزين في مجالاتهم.' },
+    { title: 'الرؤية', content:  'الصنعة هي مبادرة تعليمية تهدف إلى تدريب وتطوير مهارات الحرفيين في مختلف المجالات والصناعات اليدوية. تتميز هذه الورشة بمشاركة عدد كبير من الخبراء والمحترفين المتميزين في مجالات متنوعة، مما يسهم في تقديم تجارب وخبرات متنوعة وقيمة للمشاركين. يتم تنظيم ورشة الصنعة بشكل دوري أو عند الطلب، وتشمل مجموعة واسعة من المواضيع مثل النجارة، والخياطة، والفنون التقليدية، والحرف اليدوية المتنوعة مثل الخزف، النحت، النسيج، والأعمال الحرفية الأخرى. باختصار، تُعد "الصنعة" بيئة تعليمية مثالية لتنمية وتطوير مهارات الحرفيين وصقل مواهبهم من خلال تجارب عملية وتوجيهات خبراء متميزين في مجالاتهم.' },
+    { title: 'المهمة', content:  'الصنعة هي مبادرة تعليمية تهدف إلى تدريب وتطوير مهارات الحرفيين في مختلف المجالات والصناعات اليدوية. تتميز هذه الورشة بمشاركة عدد كبير من الخبراء والمحترفين المتميزين في مجالات متنوعة، مما يسهم في تقديم تجارب وخبرات متنوعة وقيمة للمشاركين. يتم تنظيم ورشة الصنعة بشكل دوري أو عند الطلب، وتشمل مجموعة واسعة من المواضيع مثل النجارة، والخياطة، والفنون التقليدية، والحرف اليدوية المتنوعة مثل الخزف، النحت، النسيج، والأعمال الحرفية الأخرى. باختصار، تُعد "الصنعة" بيئة تعليمية مثالية لتنمية وتطوير مهارات الحرفيين وصقل مواهبهم من خلال تجارب عملية وتوجيهات خبراء متميزين في مجالاتهم.'},
+    { title: 'القيم', content:  'الصنعة هي مبادرة تعليمية تهدف إلى تدريب وتطوير مهارات الحرفيين في مختلف المجالات والصناعات اليدوية. تتميز هذه الورشة بمشاركة عدد كبير من الخبراء والمحترفين المتميزين في مجالات متنوعة، مما يسهم في تقديم تجارب وخبرات متنوعة وقيمة للمشاركين. يتم تنظيم ورشة الصنعة بشكل دوري أو عند الطلب، وتشمل مجموعة واسعة من المواضيع مثل النجارة، والخياطة، والفنون التقليدية، والحرف اليدوية المتنوعة مثل الخزف، النحت، النسيج، والأعمال الحرفية الأخرى. باختصار، تُعد "الصنعة" بيئة تعليمية مثالية لتنمية وتطوير مهارات الحرفيين وصقل مواهبهم من خلال تجارب عملية وتوجيهات خبراء متميزين في مجالاتهم.' }
+]);
+
 onMounted(() => {
   const options = {
     root: null,
@@ -43,7 +51,10 @@ const handleIntersection = (entries : any) => {
   
   <!-- el san3a main -->
   <div id="section1" class="p-3 flex flex-column md:flex-row justify-content-center">
-    <div class="w-full md:w-12 zoominright animation-duration-1000 animation-iteration-1">
+    <section class="slider">
+      <HomeSlider />
+    </section>
+    <!-- <div class="w-full md:w-12 zoominright animation-duration-1000 animation-iteration-1">
       <img src="../images/elsan3a.png" class="max-w-12rem md:max-w-16rem flex mx-auto md:mx-0 my-5 md:my-0" alt="">
       <h2 class="secondaryColor"><span class="textColor">من</span> المتحدثين بالورشة</h2>
       <div class="flex my-3">
@@ -73,9 +84,9 @@ const handleIntersection = (entries : any) => {
         <h1 class="">أسماء الراشدي</h1>
         <h4 class="">مسئولة الشباب</h4>
       </div>
-    </div>
+    </div> -->
   </div>
-  <div class="zoomin animation-duration-1000 animation-iteration-1" style="margin-bottom: 10vh;">
+  <!-- <div class="zoomin animation-duration-1000 animation-iteration-1" style="margin-bottom: 10vh;">
     <h2 class="textColor p-3">باقي المتحدثين</h2>
     <div class="flex scroll-container flex-nowrap md:flex-wrap w-full m-auto justifyCenter">
       <img src="../images/asmaa.png" class="flex md:hidden max-w-30rem max-h-17rem" alt="">
@@ -88,19 +99,23 @@ const handleIntersection = (entries : any) => {
       <h1 class="">أسماء الراشدي</h1>
       <h4 class="">مسئولة الشباب</h4>
     </div>
-  </div>
+  </div> -->
   <!-- el san3a main end -->
 
   <!-- Home -->
   <div id="sectionHome1" class="flex justify-content-center align-items-center animation-duration-1000 animation-ease-in-out">
     <div class="flex flex-column md:flex-row my-5">
-          <div class="mx-auto md:mx-5 w-11 my-5">
-            <img src="../images/elsan3a.png" class="my-5 flex mx-auto md:mx-0 max-w-16rem" alt="">
+          <div class="mx-auto md:mx-5 w-8 my-5">
+              <TabView>
+                      <TabPanel v-for="tab in tabs" :key="tab.title" :header="tab.title">
+                          <p class="m-0">{{ tab.content }}</p>
+                      </TabPanel>
+              </TabView>
+            <!-- <img src="../images/elsan3a.png" class="my-5 flex mx-auto md:mx-0 max-w-16rem" alt="">
             <h1 class="secondaryColor">نبذة عنا</h1>
             <div class="borderRound mb-2 mt-1 secondaryBg" style="height: 0.5rem;"></div>
             <div class="flex align-items-center">
               <div class="hidden md:flex flex-column">
-                <!-- <h2 class="my-5 secondaryColor cursor-pointer">نبذه عنا</h2> -->
                 <h2 class="my-5 inactiveColor cursor-pointer">الرؤية</h2>
                 <h2 class="my-5 inactiveColor cursor-pointer">المهمة</h2>
                 <h2 class="my-5 inactiveColor cursor-pointer">القيم</h2>
@@ -111,17 +126,18 @@ const handleIntersection = (entries : any) => {
                 
                 باختصار، تُعد "الصنعة" بيئة تعليمية مثالية لتنمية وتطوير مهارات الحرفيين وصقل مواهبهم من خلال تجارب عملية وتوجيهات خبراء متميزين في مجالاتهم.
               </h3>
-            </div>
+            </div> -->
           </div>
           <div class="flex scroll-container mx-auto md:mx-5 md:flex-column" style="max-width: 90vw;">
             <img src="../images/homePage1.png" class="max-w-14rem mx-3 md:mx-1 my-3" alt="">
-            <img src="../images/homePage2.png" class="max-w-14rem mx-3 md:mx-1 my-3" alt="">
+            <!-- <img src="../images/homePage2.png" class="max-w-14rem mx-3 md:mx-1 my-3" alt=""> -->
           </div>
     </div>
   </div>
 </div>
 
-<!-- Video Viewer -->
+<!-- Video-Viewer Section -->
+
 <div id="sectionHome2" v-animateonscroll="{ enterClass: 'fadein', leaveClass: 'fadeout' }" class="flex justify-content-center align-items-center animation-duration-1000 animation-ease-in-out">
   <div class="videoViewerBg py-5">
     <h1 class="secondaryColor text-7xl text-center">اعرف تويا</h1>
@@ -136,6 +152,25 @@ const handleIntersection = (entries : any) => {
   </div>
 </div>
 
+<!-- El Masna3 (  اعمل كتابك  ) -->
+<div v-animateonscroll="{ enterClass: 'fadein', leaveClass: 'fadeout' }" class="flex justify-content-center align-items-center animation-duration-1000 animation-ease-in-out">
+  <div class="p-5 marginRight my-5" style="margin-right: 12rem;">
+    <h1 class="secondaryColor text-5xl my-3 md:my-0 md:text-7xl">اعمل كتابك</h1>
+    <p class="textColor text-xl font-bold textCenter w-12 md:w-9">"اعمل كتابك" هو تطبيق مميز مصمم لمساعدة الكتّاب والمؤلفين في إيجاد المصحح اللغوي المناسب ومصمم الغلاف المحترف لكتبهم. يهدف التطبيق إلى تسهيل عملية اختيار المصحح اللغوي المناسب الذي يمكنه تحسين اللغة والنحو والإملاء للنصوص بكفاءة عالية.
+      بالإضافة إلى ذلك، يُمكنك من خلال "اعمل كتابك" الوصول إلى مجموعة من المصممين المحترفين لتصميم أغلفة الكتب، حيث يمكنك اختيار والتعامل مع مصمم يساعدك في تصميم غلاف كتابك بشكل جذاب وملهم.
+    </p>
+    <div style="z-index: 9 !important;" @click="push('/elmasna3')" class="w-3 gredientBg text-center p-3 borderRound my-5 py-3 flex justify-content-center cursor-pointer">
+      <h2>ابدأ دلوقتي</h2>
+      <span class="material-symbols-outlined mx-3 font-bold text-3xl mt-2">
+        keyboard_backspace
+      </span>
+    </div>
+  </div>
+</div>
+
+
+<!-- Testimonials-Feedback Section -->
+
 <div id="sectionHome3" v-animateonscroll="{ enterClass: 'fadein', leaveClass: 'fadeout' }" class="flex justify-content-center align-items-center animation-duration-1000 animation-ease-in-out marginRight py-5 my-5">
   <div class="flex flex-column md:flex-row">
     <div>
@@ -148,6 +183,7 @@ const handleIntersection = (entries : any) => {
   </div>
 </div>
 
+<!-- Testimonials-Feedback Section -->
 <div id="sectionHome4" v-animateonscroll="{ enterClass: 'zoomin', leaveClass: 'fadeout' }" class="flex justify-content-center align-items-center animation-duration-1000 animation-ease-in-out marginRight py-5 my-5">
     <div class="p-5">
       <h1 class="primaryColor text-5xl my-3 md:my-0 md:text-7xl">شاركونا نجاحنا</h1>
@@ -171,6 +207,10 @@ const handleIntersection = (entries : any) => {
 <script lang="ts">
 import { defineComponent } from 'vue'
 import YouTube from 'vue3-youtube'
+import TabView from 'primevue/tabview';
+import TabPanel from 'primevue/tabpanel';
+import HomeSlider from '@/components/home/HomeSlider.vue';
+import AppImage from '@/components/app/AppImage.vue';
 
 export default defineComponent({
     components: { YouTube },
@@ -182,6 +222,26 @@ export default defineComponent({
 })
 </script>
 <style>
+
+.p-tabview .p-tabview-panels {
+  background: none !important;
+}
+.p-tabview .p-tabview-nav {
+  background: none !important;
+}
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  background: none !important;
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+}
+.p-tabview .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled):focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 0.2rem var(--secondary-color) !important;
+}
+.p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  background: none !important;
+}
 .videoViewerBg{
   background-color: rgb(16,18,20);
 }

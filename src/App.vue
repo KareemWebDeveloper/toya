@@ -13,3 +13,7 @@ import Footer from '@/components/footer.vue'
 
 </template>
 
+<style>
+
+</style>
+

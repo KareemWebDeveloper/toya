@@ -14,7 +14,7 @@
   --color1 : rgb(19,24,28);
   --color2 : rgb(37 , 42 , 49);
   /* --color6 : rgb(30 , 34 , 42); */
-  --primary-color : #AD893F; 
+  --primary-color : #AD893F;  
   --secondary-color : #C5A685; 
   --gredient-color : linear-gradient(to right, var(--color1) 0%, var(--color2) 100%);
   /* Add more CSS variables */
@@ -44,7 +44,7 @@ body{
   color: var(--text-color);
 }
 .primaryColor{
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
 }
 .secondaryColor{
   color: var(--secondary-color);
@@ -53,5 +53,5 @@ body{
   background-color: var(--secondary-color);
 }
 .borderRound{
-  border-radius: 20px;
+  border-radius: 15px;
 }

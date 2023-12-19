@@ -22,7 +22,7 @@ function scrollToSection(sectionId : any) {
           <span class="material-symbols-outlined textColor p-3 text-4xl" @click="isMobExpanded = false">
             close
           </span>
-            <div class="flex flex-column text-center p-2 py-2">
+            <div class="flex flex-column text-center py-2">
                 <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3" @click="scrollToSection('section1')" :class="{'activeSection' : currentRoute.hash == '#section1'}">
                     pages
                 </span>
@@ -38,7 +38,7 @@ function scrollToSection(sectionId : any) {
             </div>
         </div>
     </Sidebar>
-    <div class="hidden md:flex gredBg py-5 px-3 w-5rem flex-column justify-content-center align-items-center">
+    <div class="hidden md:flex gredBg py-5 px-3 w-7rem flex-column justify-content-center align-items-center">
         <img  src="../images/logo.png" class="w-6 absolute" style="top: 5vh;" alt="">
         <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3" @click="scrollToSection('section1')" :class="{'activeSection' : currentRoute.hash == '#section1'}">
             pages
@@ -46,14 +46,14 @@ function scrollToSection(sectionId : any) {
         <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3" @click="scrollToSection('sectionHome1')"  :class="{'activeSection' : currentRoute.hash .includes('#sectionHome')}">
             home
         </span>
-        <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3">
+        <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3" @click="push('/elmasna3')" :class="{'activeSection' : currentRoute.path.includes('elmasna3')}">
             build
         </span>
         <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3">
             engineering
         </span>
     </div>
-    <div class="image-overlay"></div>
+    <!-- <div class="image-overlay"></div> -->
 </template>
 <style>
 .activeSection{
@@ -62,7 +62,6 @@ function scrollToSection(sectionId : any) {
 }
 .gredBg{
     height: 100vh;
-    z-index: 9;
     position: fixed;
     background: linear-gradient(to bottom , rgb(19 , 24 , 28) 0% , rgb(30 , 34 , 42) 100%);
 }
@@ -76,7 +75,8 @@ function scrollToSection(sectionId : any) {
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
-    right: 7.2%;
+    z-index: 1;
+    right: 6.2%;
     opacity: 0.5; /* Adjust the opacity as needed */
   }
   .sidebar {
