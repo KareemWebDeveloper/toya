@@ -3,7 +3,7 @@
     <div class="card">
         <Galleria :value="persons" :responsiveOptions="responsiveOptions" :numVisible="4" containerStyle="max-width: 100%">
             <template #item="slotProps">
-                <div class="flex justify-content-between align-items-center slider-wrapper">
+                <div class="flex flex-column md:flex-row justify-content-between align-items-center slider-wrapper">
                     <div class="flex flex-column">
                         <AppImage class="logo" :size="{ width: 250 }" src="elsan3a.png"></AppImage>
                         <div class="slider-text-wrapper font-bold" style="color: var(--text-color); font-size: 18px !important; " v-html="slotProps.item.description!">

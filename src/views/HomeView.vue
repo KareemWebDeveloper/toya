@@ -60,90 +60,29 @@ const handleIntersection = (entries : any) => {
 </script>
 
 <template>
-<div class="marginRight py-5">
+<div class="marginRight py-5 max-w-screen">
   
   <!-- el san3a main -->
   <div id="section1" class="p-3 flex flex-column md:flex-row justify-content-center">
-    <section class="slider">
+    <section class="hidden md:flex slider">
       <HomeSlider />
     </section>
-    <!-- <div class="w-full md:w-12 zoominright animation-duration-1000 animation-iteration-1">
-      <img src="../images/elsan3a.png" class="max-w-12rem md:max-w-16rem flex mx-auto md:mx-0 my-5 md:my-0" alt="">
-      <h2 class="secondaryColor"><span class="textColor">من</span> المتحدثين بالورشة</h2>
-      <div class="flex my-3">
-        <div class="flex align-items-center">
-          <span class="material-symbols-outlined textColor text-3xl">
-            calendar_month
-          </span>
-          <h4 class="textColor mx-2">١٩ نوفمبر ٢٠٢٣</h4>
-        </div>
-        <div class="flex align-items-center mx-2">
-          <span class="material-symbols-outlined mx-2 textColor text-3xl">
-            timer
-          </span>
-          <h4 class="textColor">٩ صباحاً</h4>
-        </div>
-      </div>
-      <p class="textColor w-full font-bold">تهدف الورشة لاستخراج المواهب المدفونة من قبل 
-        متخصصين و خبراء للمساهمة في تقدم الحرف في البلاد و اتاحة فرص اكثر للشباب. 
-        تحتوي الصنعة علي عدة فقرات مفيدة و تتبع منهج علمي في الانتقاء و التوجيه. 
-        شارك معنا باقة من امهر الخبراء و الحرفيين لتتكون الصورة الكاملة للصنعة...
-        </p>
-        <h2 class="w-5 my-3 cursor-pointer gredientBg text-center p-3 borderRound">سجل الآن</h2>
-    </div>
-    <div class="hidden md:flex flex-column align-items-center w-10 justify-content-center zoominleft animation-duration-1000 animation-iteration-1">
-      <img src="../images/asmaa.png" class="w-9 mx-5" alt="">
-      <div class="py-2 px-5 borderRound w-8" style="background-color: #D9B58D;">
-        <h1 class="">أسماء الراشدي</h1>
-        <h4 class="">مسئولة الشباب</h4>
-      </div>
-    </div> -->
   </div>
-  <!-- <div class="zoomin animation-duration-1000 animation-iteration-1" style="margin-bottom: 10vh;">
-    <h2 class="textColor p-3">باقي المتحدثين</h2>
-    <div class="flex scroll-container flex-nowrap md:flex-wrap w-full m-auto justifyCenter">
-      <img src="../images/asmaa.png" class="flex md:hidden max-w-30rem max-h-17rem" alt="">
-      <img src="../images/Group 4.png" class="max-w-20rem max-h-17rem" alt="">
-      <img src="../images/Group 1.png" class="max-w-20rem max-h-17rem" alt="">
-      <img src="../images/Group 2.png" class="max-w-20rem max-h-17rem" alt="">
-      <img src="../images/Group 3.png" class="max-w-20rem max-h-17rem" style="margin: 0 4rem;" alt="">
-    </div>
-    <div class="flex flex-column text-center md:hidden py-2 px-5 borderRound" style="background-color: #D9B58D;">
-      <h1 class="">أسماء الراشدي</h1>
-      <h4 class="">مسئولة الشباب</h4>
-    </div>
-  </div> -->
+
   <!-- el san3a main end -->
 
   <!-- Home -->
   <div id="sectionHome1" class="flex justify-content-center align-items-center animation-duration-1000 animation-ease-in-out">
     <div class="flex flex-column md:flex-row my-5">
-          <div class="mx-auto md:mx-5 w-8 my-5">
+          <div class="mx-auto md:mx-5 w-10 md:w-8 my-5">
               <TabView>
                       <TabPanel v-for="tab in tabs" :key="tab.title" :header="tab.title">
-                          <!-- <p style="font-weight: bolder;" class="m-0 text-xl">{{ tab.content }}</p> -->
-                          <p style="font-weight: bolder;" class="m-0 text-xl">الصنعة هي مبادرة تعليمية تهدف إلى تدريب وتطوير مهارات الحرفيين في مختلف المجالات والصناعات اليدوية. تتميز هذه الورشة بمشاركة عدد كبير من الخبراء والمحترفين المتميزين في مجالات متنوعة، مما يسهم في تقديم تجارب وخبرات متنوعة وقيمة للمشاركين.<br>
+                          <p style="font-weight: bolder;" class="m-0 text-base md:text-xl">الصنعة هي مبادرة تعليمية تهدف إلى تدريب وتطوير مهارات الحرفيين في مختلف المجالات والصناعات اليدوية. تتميز هذه الورشة بمشاركة عدد كبير من الخبراء والمحترفين المتميزين في مجالات متنوعة، مما يسهم في تقديم تجارب وخبرات متنوعة وقيمة للمشاركين.<br>
                             يتم تنظيم ورشة الصنعة بشكل دوري أو عند الطلب، وتشمل مجموعة واسعة من المواضيع مثل النجارة، والخياطة، والفنون التقليدية، والحرف اليدوية المتنوعة مثل الخزف، النحت، النسيج، والأعمال الحرفية الأخرى.<br>
                             
                             باختصار، تُعد "الصنعة" بيئة تعليمية مثالية لتنمية وتطوير مهارات الحرفيين وصقل مواهبهم من خلال تجارب عملية وتوجيهات خبراء متميزين في مجالاتهم.</p>
                       </TabPanel>
               </TabView>
-            <!-- <img src="../images/elsan3a.png" class="my-5 flex mx-auto md:mx-0 max-w-16rem" alt="">
-            <h1 class="secondaryColor">نبذة عنا</h1>
-            <div class="borderRound mb-2 mt-1 secondaryBg" style="height: 0.5rem;"></div>
-            <div class="flex align-items-center">
-              <div class="hidden md:flex flex-column">
-                <h2 class="my-5 inactiveColor cursor-pointer">الرؤية</h2>
-                <h2 class="my-5 inactiveColor cursor-pointer">المهمة</h2>
-                <h2 class="my-5 inactiveColor cursor-pointer">القيم</h2>
-              </div>
-              <h3 class="font-bold textColor my-3 mx-2 md:mx-5">
-                الصنعة هي مبادرة تعليمية تهدف إلى تدريب وتطوير مهارات الحرفيين في مختلف المجالات والصناعات اليدوية. تتميز هذه الورشة بمشاركة عدد كبير من الخبراء والمحترفين المتميزين في مجالات متنوعة، مما يسهم في تقديم تجارب وخبرات متنوعة وقيمة للمشاركين.
-                يتم تنظيم ورشة الصنعة بشكل دوري أو عند الطلب، وتشمل مجموعة واسعة من المواضيع مثل النجارة، والخياطة، والفنون التقليدية، والحرف اليدوية المتنوعة مثل الخزف، النحت، النسيج، والأعمال الحرفية الأخرى.<br><br>
-                
-                باختصار، تُعد "الصنعة" بيئة تعليمية مثالية لتنمية وتطوير مهارات الحرفيين وصقل مواهبهم من خلال تجارب عملية وتوجيهات خبراء متميزين في مجالاتهم.
-              </h3>
-            </div> -->
           </div>
           <div class="flex scroll-container mx-auto md:mx-5 md:flex-column" style="max-width: 90vw;">
             <img src="../images/homePage1.png" class="max-w-14rem mx-3 md:mx-1 my-3" alt="">
@@ -171,9 +110,9 @@ const handleIntersection = (entries : any) => {
 
 <!-- El Masna3 (  اعمل كتابك  ) -->
 <div v-animateonscroll="{ enterClass: 'fadein', leaveClass: 'fadeout' }" class="flex justify-content-center align-items-center animation-duration-1000 animation-ease-in-out">
-  <div class="p-5 marginRight my-5" style="margin-right: 12rem;">
+  <div class="p-2 md:p-5 marginRight my-5">
     <h1 class="secondaryColor text-5xl my-3 md:my-0 md:text-7xl">اعمل كتابك</h1>
-    <p class="textColor text-xl font-bold textCenter w-12 md:w-9">"اعمل كتابك" هو تطبيق مميز مصمم لمساعدة الكتّاب والمؤلفين في إيجاد المصحح اللغوي المناسب ومصمم الغلاف المحترف لكتبهم. يهدف التطبيق إلى تسهيل عملية اختيار المصحح اللغوي المناسب الذي يمكنه تحسين اللغة والنحو والإملاء للنصوص بكفاءة عالية.
+    <p class="textColor text-xl font-bold w-12 md:w-9">"اعمل كتابك" هو تطبيق مميز مصمم لمساعدة الكتّاب والمؤلفين في إيجاد المصحح اللغوي المناسب ومصمم الغلاف المحترف لكتبهم. يهدف التطبيق إلى تسهيل عملية اختيار المصحح اللغوي المناسب الذي يمكنه تحسين اللغة والنحو والإملاء للنصوص بكفاءة عالية.
       بالإضافة إلى ذلك، يُمكنك من خلال "اعمل كتابك" الوصول إلى مجموعة من المصممين المحترفين لتصميم أغلفة الكتب، حيث يمكنك اختيار والتعامل مع مصمم يساعدك في تصميم غلاف كتابك بشكل جذاب وملهم.
     </p>
     <div class="flex justify-content-center w-9">
@@ -285,6 +224,9 @@ export default defineComponent({
 .maxWidth{
   max-width: 33rem;
 }
+.p-carousel-items-content {
+  height: 500px !important;
+}
 @media screen and (max-width : 600px) {
   .marginRight{
     margin-right: 0;
@@ -301,6 +243,9 @@ export default defineComponent({
   .textCenter{
     text-align: center;
   }
+  .p-carousel-items-content {
+    height: 820px !important;
+  }
   .scroll-container {
     overflow-x: auto !important; /* Enable horizontal scrolling */
     -webkit-overflow-scrolling: touch !important; /* Enable smooth scrolling on iOS devices */
@@ -311,3 +256,69 @@ export default defineComponent({
   }
 }
 </style>
+
+
+<!-- <div class="w-full md:w-12 zoominright animation-duration-1000 animation-iteration-1">
+      <img src="../images/elsan3a.png" class="max-w-12rem md:max-w-16rem flex mx-auto md:mx-0 my-5 md:my-0" alt="">
+      <h2 class="secondaryColor"><span class="textColor">من</span> المتحدثين بالورشة</h2>
+      <div class="flex my-3">
+        <div class="flex align-items-center">
+          <span class="material-symbols-outlined textColor text-3xl">
+            calendar_month
+          </span>
+          <h4 class="textColor mx-2">١٩ نوفمبر ٢٠٢٣</h4>
+        </div>
+        <div class="flex align-items-center mx-2">
+          <span class="material-symbols-outlined mx-2 textColor text-3xl">
+            timer
+          </span>
+          <h4 class="textColor">٩ صباحاً</h4>
+        </div>
+      </div>
+      <p class="textColor w-full font-bold">تهدف الورشة لاستخراج المواهب المدفونة من قبل 
+        متخصصين و خبراء للمساهمة في تقدم الحرف في البلاد و اتاحة فرص اكثر للشباب. 
+        تحتوي الصنعة علي عدة فقرات مفيدة و تتبع منهج علمي في الانتقاء و التوجيه. 
+        شارك معنا باقة من امهر الخبراء و الحرفيين لتتكون الصورة الكاملة للصنعة...
+        </p>
+        <h2 class="w-5 my-3 cursor-pointer gredientBg text-center p-3 borderRound">سجل الآن</h2>
+    </div>
+    <div class="hidden md:flex flex-column align-items-center w-10 justify-content-center zoominleft animation-duration-1000 animation-iteration-1">
+      <img src="../images/asmaa.png" class="w-9 mx-5" alt="">
+      <div class="py-2 px-5 borderRound w-8" style="background-color: #D9B58D;">
+        <h1 class="">أسماء الراشدي</h1>
+        <h4 class="">مسئولة الشباب</h4>
+      </div>
+    </div> -->
+
+
+      <!-- <div class="zoomin animation-duration-1000 animation-iteration-1" style="margin-bottom: 10vh;">
+    <h2 class="textColor p-3">باقي المتحدثين</h2>
+    <div class="flex scroll-container flex-nowrap md:flex-wrap w-full m-auto justifyCenter">
+      <img src="../images/asmaa.png" class="flex md:hidden max-w-30rem max-h-17rem" alt="">
+      <img src="../images/Group 4.png" class="max-w-20rem max-h-17rem" alt="">
+      <img src="../images/Group 1.png" class="max-w-20rem max-h-17rem" alt="">
+      <img src="../images/Group 2.png" class="max-w-20rem max-h-17rem" alt="">
+      <img src="../images/Group 3.png" class="max-w-20rem max-h-17rem" style="margin: 0 4rem;" alt="">
+    </div>
+    <div class="flex flex-column text-center md:hidden py-2 px-5 borderRound" style="background-color: #D9B58D;">
+      <h1 class="">أسماء الراشدي</h1>
+      <h4 class="">مسئولة الشباب</h4>
+    </div>
+  </div> -->
+
+              <!-- <img src="../images/elsan3a.png" class="my-5 flex mx-auto md:mx-0 max-w-16rem" alt="">
+            <h1 class="secondaryColor">نبذة عنا</h1>
+            <div class="borderRound mb-2 mt-1 secondaryBg" style="height: 0.5rem;"></div>
+            <div class="flex align-items-center">
+              <div class="hidden md:flex flex-column">
+                <h2 class="my-5 inactiveColor cursor-pointer">الرؤية</h2>
+                <h2 class="my-5 inactiveColor cursor-pointer">المهمة</h2>
+                <h2 class="my-5 inactiveColor cursor-pointer">القيم</h2>
+              </div>
+              <h3 class="font-bold textColor my-3 mx-2 md:mx-5">
+                الصنعة هي مبادرة تعليمية تهدف إلى تدريب وتطوير مهارات الحرفيين في مختلف المجالات والصناعات اليدوية. تتميز هذه الورشة بمشاركة عدد كبير من الخبراء والمحترفين المتميزين في مجالات متنوعة، مما يسهم في تقديم تجارب وخبرات متنوعة وقيمة للمشاركين.
+                يتم تنظيم ورشة الصنعة بشكل دوري أو عند الطلب، وتشمل مجموعة واسعة من المواضيع مثل النجارة، والخياطة، والفنون التقليدية، والحرف اليدوية المتنوعة مثل الخزف، النحت، النسيج، والأعمال الحرفية الأخرى.<br><br>
+                
+                باختصار، تُعد "الصنعة" بيئة تعليمية مثالية لتنمية وتطوير مهارات الحرفيين وصقل مواهبهم من خلال تجارب عملية وتوجيهات خبراء متميزين في مجالاتهم.
+              </h3>
+            </div> -->

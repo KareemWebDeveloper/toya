@@ -15,30 +15,34 @@ function scrollToSection(sectionId : any) {
 
 </script>
 <template>
-    <span @click="isMobExpanded = true" class="material-symbols-outlined cursor-pointer text-6xl flex md:hidden fixed primaryColor font-bold"  style="top: 1.5vh; right: 3vh; z-index: 999;">
-        menu
-    </span>
-    <Sidebar v-model:visible="isMobExpanded" >
-        <div class="sidebar expanded">
-          <span class="material-symbols-outlined textColor p-3 text-4xl" @click="isMobExpanded = false">
-            close
-          </span>
-            <div class="flex flex-column text-center py-2">
-                <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3" @click="scrollToSection('section1')" :class="{'activeSection' : currentRoute.hash == '#section1'}">
-                    pages
-                </span>
-                <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3" @click="scrollToSection('sectionHome1')"  :class="{'activeSection' : currentRoute.hash .includes('#sectionHome')}">
-                    home
-                </span>
-                <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3">
-                    build
-                </span>
-                <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3">
-                    engineering
-                </span>
+    <div class="w-full" style="direction: rtl;">
+        <!-- <div class="fixed " @click="isMobExpanded = true" style="top: 2vh; right: 2vh; z-index: 999;"> -->
+            <span @click="isMobExpanded = true" class="material-symbols-outlined fixed cursor-pointer text-6xl flex md:hidden primaryColor font-bold" style="top: 2vh; right: 2vh; z-index: 999;">
+                menu
+            </span>
+        <!-- </div> -->
+        <Sidebar v-model:visible="isMobExpanded" :position="'left'">
+            <div class="mobSideBar expanded">
+              <span class="material-symbols-outlined textColor p-3 text-4xl" @click="isMobExpanded = false">
+                close
+              </span>
+                <div class="flex flex-column text-center py-2">
+                    <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3" @click="isMobExpanded = false; scrollToSection('section1');" :class="{'activeSection' : currentRoute.hash == '#section1'}">
+                        pages
+                    </span>
+                    <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3" @click="isMobExpanded = false; scrollToSection('sectionHome1');"  :class="{'activeSection' : currentRoute.hash .includes('#sectionHome')}">
+                        home
+                    </span>
+                    <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3" @click="isMobExpanded = false; push('/elmasna3');" :class="{'activeSection' : currentRoute.path.includes('elmasna3')}">
+                        build
+                    </span>
+                    <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3">
+                        engineering
+                    </span>
+                </div>
             </div>
-        </div>
-    </Sidebar>
+        </Sidebar>
+    </div>
     <div class="hidden md:flex gredBg py-5 px-3 w-7rem flex-column justify-content-center align-items-center">
         <img  src="../images/logo.png" class="w-6 absolute" style="top: 5vh;" alt="">
         <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3" @click="scrollToSection('section1')" :class="{'activeSection' : currentRoute.hash == '#section1'}">
@@ -57,6 +61,9 @@ function scrollToSection(sectionId : any) {
     <!-- <div class="image-overlay"></div> -->
 </template>
 <style>
+.p-sidebar {
+    background: none !important;
+}
 .activeSection{
     padding: 2px 0;
     border-bottom: 4px solid var(--primary-color);
@@ -90,7 +97,23 @@ function scrollToSection(sectionId : any) {
     border-start-end-radius: 25px;
     box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.81);
     height: 100vh;
-    background-color: #f2f2f2;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9;
+    transition: width 0.3s ease;
+    overflow-y: auto;
+  }
+  .mobSideBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--gredient-color);
+    width: 100px;
+    border-end-end-radius: 25px;
+    border-start-end-radius: 25px;
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.81);
+    height: 100vh;
     position: fixed;
     top: 0;
     right: 0;
