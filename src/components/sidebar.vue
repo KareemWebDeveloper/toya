@@ -5,11 +5,12 @@ import Sidebar from 'primevue/sidebar';
 const { push , currentRoute } = useRouter();
 const isMobExpanded = ref(false)
 function scrollToSection(sectionId : any) {
-    push({path : '/' , hash : `#${sectionId}`})
-  const section = document.getElementById(sectionId);
-  if (section) {
-    section.scrollIntoView({ behavior: 'smooth' });
-  }
+    push({path : '/' , hash : `#${sectionId}`}).then((result) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+    })
 }
 
 </script>

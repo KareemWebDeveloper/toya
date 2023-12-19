@@ -8,10 +8,23 @@ let observer : any = null;
 let activeSectionId = '';
 
 const tabs = ref([
-    { title: 'نبذة عنا', content: 'الصنعة هي مبادرة تعليمية تهدف إلى تدريب وتطوير مهارات الحرفيين في مختلف المجالات والصناعات اليدوية. تتميز هذه الورشة بمشاركة عدد كبير من الخبراء والمحترفين المتميزين في مجالات متنوعة، مما يسهم في تقديم تجارب وخبرات متنوعة وقيمة للمشاركين. يتم تنظيم ورشة الصنعة بشكل دوري أو عند الطلب، وتشمل مجموعة واسعة من المواضيع مثل النجارة، والخياطة، والفنون التقليدية، والحرف اليدوية المتنوعة مثل الخزف، النحت، النسيج، والأعمال الحرفية الأخرى. باختصار، تُعد "الصنعة" بيئة تعليمية مثالية لتنمية وتطوير مهارات الحرفيين وصقل مواهبهم من خلال تجارب عملية وتوجيهات خبراء متميزين في مجالاتهم.' },
+    { title: 'نبذة عنا', content: `الصنعة هي مبادرة تعليمية تهدف إلى تدريب وتطوير مهارات الحرفيين في مختلف المجالات والصناعات اليدوية. تتميز هذه الورشة بمشاركة عدد كبير من الخبراء والمحترفين المتميزين في مجالات متنوعة، مما يسهم في تقديم تجارب وخبرات متنوعة وقيمة للمشاركين.  يتم تنظيم ورشة الصنعة بشكل دوري أو عند الطلب، وتشمل مجموعة واسعة من المواضيع مثل النجارة، والخياطة، والفنون التقليدية، والحرف اليدوية المتنوعة مثل الخزف، النحت، النسيج، والأعمال الحرفية الأخرى. باختصار، تُعد "الصنعة" بيئة تعليمية مثالية لتنمية وتطوير مهارات الحرفيين وصقل مواهبهم من خلال تجارب عملية وتوجيهات خبراء متميزين في مجالاتهم.` },
     { title: 'الرؤية', content:  'الصنعة هي مبادرة تعليمية تهدف إلى تدريب وتطوير مهارات الحرفيين في مختلف المجالات والصناعات اليدوية. تتميز هذه الورشة بمشاركة عدد كبير من الخبراء والمحترفين المتميزين في مجالات متنوعة، مما يسهم في تقديم تجارب وخبرات متنوعة وقيمة للمشاركين. يتم تنظيم ورشة الصنعة بشكل دوري أو عند الطلب، وتشمل مجموعة واسعة من المواضيع مثل النجارة، والخياطة، والفنون التقليدية، والحرف اليدوية المتنوعة مثل الخزف، النحت، النسيج، والأعمال الحرفية الأخرى. باختصار، تُعد "الصنعة" بيئة تعليمية مثالية لتنمية وتطوير مهارات الحرفيين وصقل مواهبهم من خلال تجارب عملية وتوجيهات خبراء متميزين في مجالاتهم.' },
     { title: 'المهمة', content:  'الصنعة هي مبادرة تعليمية تهدف إلى تدريب وتطوير مهارات الحرفيين في مختلف المجالات والصناعات اليدوية. تتميز هذه الورشة بمشاركة عدد كبير من الخبراء والمحترفين المتميزين في مجالات متنوعة، مما يسهم في تقديم تجارب وخبرات متنوعة وقيمة للمشاركين. يتم تنظيم ورشة الصنعة بشكل دوري أو عند الطلب، وتشمل مجموعة واسعة من المواضيع مثل النجارة، والخياطة، والفنون التقليدية، والحرف اليدوية المتنوعة مثل الخزف، النحت، النسيج، والأعمال الحرفية الأخرى. باختصار، تُعد "الصنعة" بيئة تعليمية مثالية لتنمية وتطوير مهارات الحرفيين وصقل مواهبهم من خلال تجارب عملية وتوجيهات خبراء متميزين في مجالاتهم.'},
     { title: 'القيم', content:  'الصنعة هي مبادرة تعليمية تهدف إلى تدريب وتطوير مهارات الحرفيين في مختلف المجالات والصناعات اليدوية. تتميز هذه الورشة بمشاركة عدد كبير من الخبراء والمحترفين المتميزين في مجالات متنوعة، مما يسهم في تقديم تجارب وخبرات متنوعة وقيمة للمشاركين. يتم تنظيم ورشة الصنعة بشكل دوري أو عند الطلب، وتشمل مجموعة واسعة من المواضيع مثل النجارة، والخياطة، والفنون التقليدية، والحرف اليدوية المتنوعة مثل الخزف، النحت، النسيج، والأعمال الحرفية الأخرى. باختصار، تُعد "الصنعة" بيئة تعليمية مثالية لتنمية وتطوير مهارات الحرفيين وصقل مواهبهم من خلال تجارب عملية وتوجيهات خبراء متميزين في مجالاتهم.' }
+]);
+
+const feedbacks = ref([
+    { feedback: '“من افضل دور النشر اللي اتعاملنا معاها. حرفية في المعاملة و مواعيد مظبوطة. شكراً تويا”',
+      author : 'سلمي طارق',
+      jobTitile : 'كاتبة و مؤلفة',
+      image : 'src/images/asmaaB&W.png'
+    },
+    { feedback: '“من افضل دور النشر اللي اتعاملنا معاها. حرفية في المعاملة و مواعيد مظبوطة. شكراً تويا”',
+      author : 'مستشار ثقافي',
+      jobTitile : 'كاتب',
+      image : 'src/assets/emad.png'
+    },
 ]);
 
 onMounted(() => {
@@ -108,7 +121,11 @@ const handleIntersection = (entries : any) => {
           <div class="mx-auto md:mx-5 w-8 my-5">
               <TabView>
                       <TabPanel v-for="tab in tabs" :key="tab.title" :header="tab.title">
-                          <p class="m-0">{{ tab.content }}</p>
+                          <!-- <p style="font-weight: bolder;" class="m-0 text-xl">{{ tab.content }}</p> -->
+                          <p style="font-weight: bolder;" class="m-0 text-xl">الصنعة هي مبادرة تعليمية تهدف إلى تدريب وتطوير مهارات الحرفيين في مختلف المجالات والصناعات اليدوية. تتميز هذه الورشة بمشاركة عدد كبير من الخبراء والمحترفين المتميزين في مجالات متنوعة، مما يسهم في تقديم تجارب وخبرات متنوعة وقيمة للمشاركين.<br>
+                            يتم تنظيم ورشة الصنعة بشكل دوري أو عند الطلب، وتشمل مجموعة واسعة من المواضيع مثل النجارة، والخياطة، والفنون التقليدية، والحرف اليدوية المتنوعة مثل الخزف، النحت، النسيج، والأعمال الحرفية الأخرى.<br>
+                            
+                            باختصار، تُعد "الصنعة" بيئة تعليمية مثالية لتنمية وتطوير مهارات الحرفيين وصقل مواهبهم من خلال تجارب عملية وتوجيهات خبراء متميزين في مجالاتهم.</p>
                       </TabPanel>
               </TabView>
             <!-- <img src="../images/elsan3a.png" class="my-5 flex mx-auto md:mx-0 max-w-16rem" alt="">
@@ -130,7 +147,7 @@ const handleIntersection = (entries : any) => {
           </div>
           <div class="flex scroll-container mx-auto md:mx-5 md:flex-column" style="max-width: 90vw;">
             <img src="../images/homePage1.png" class="max-w-14rem mx-3 md:mx-1 my-3" alt="">
-            <!-- <img src="../images/homePage2.png" class="max-w-14rem mx-3 md:mx-1 my-3" alt=""> -->
+            <img src="../images/homePage2.png" class="max-w-14rem mx-3 md:mx-1 my-3" alt="">
           </div>
     </div>
   </div>
@@ -159,28 +176,33 @@ const handleIntersection = (entries : any) => {
     <p class="textColor text-xl font-bold textCenter w-12 md:w-9">"اعمل كتابك" هو تطبيق مميز مصمم لمساعدة الكتّاب والمؤلفين في إيجاد المصحح اللغوي المناسب ومصمم الغلاف المحترف لكتبهم. يهدف التطبيق إلى تسهيل عملية اختيار المصحح اللغوي المناسب الذي يمكنه تحسين اللغة والنحو والإملاء للنصوص بكفاءة عالية.
       بالإضافة إلى ذلك، يُمكنك من خلال "اعمل كتابك" الوصول إلى مجموعة من المصممين المحترفين لتصميم أغلفة الكتب، حيث يمكنك اختيار والتعامل مع مصمم يساعدك في تصميم غلاف كتابك بشكل جذاب وملهم.
     </p>
-    <div style="z-index: 9 !important;" @click="push('/elmasna3')" class="w-3 gredientBg text-center p-3 borderRound my-5 py-3 flex justify-content-center cursor-pointer">
-      <h2>ابدأ دلوقتي</h2>
-      <span class="material-symbols-outlined mx-3 font-bold text-3xl mt-2">
-        keyboard_backspace
-      </span>
+    <div class="flex justify-content-center w-9">
+      <div style="z-index: 9 !important;" @click="push('/elmasna3')" class="w-15rem gredientBg text-center p-3 borderRound my-5 py-3 flex justify-content-center cursor-pointer">
+        <h2>ابدأ دلوقتي</h2>
+        <span class="material-symbols-outlined mx-3 font-bold text-3xl mt-2">
+          keyboard_backspace
+        </span>
+      </div>
     </div>
   </div>
 </div>
 
-
-<!-- Testimonials-Feedback Section -->
-
 <div id="sectionHome3" v-animateonscroll="{ enterClass: 'fadein', leaveClass: 'fadeout' }" class="flex justify-content-center align-items-center animation-duration-1000 animation-ease-in-out marginRight py-5 my-5">
-  <div class="flex flex-column md:flex-row">
-    <div>
-      <h1 class="secondaryColor text-5xl md:text-7xl p-5">و كان رأيهم عننا...</h1>
-      <h1 class="textColor w-10 px-5">“من افضل دور النشر اللي اتعاملنا معاها. حرفية في المعاملة و مواعيد مظبوطة. شكراً تويا”</h1>
-      <h1 class="secondaryColor my-3 px-5">سلمي طارق</h1>
-      <h3 class="px-5 textColor">كاتبة و مؤلفة</h3>
-    </div>
-    <img src="../images/asmaaB&W.png" class="maxWidth" alt="">
-  </div>
+<div style="width: 85%;" class="m-auto">
+  <Carousel :value="feedbacks" :numVisible="1" :numScroll="1" orientation="vertical" circular :autoplayInterval="3000" verticalViewPortHeight="500px" contentClass="flex align-items-center">
+    <template #item="slotProps">
+      <div class="flex flex-column md:flex-row">
+        <div>
+          <h1 class="secondaryColor text-5xl md:text-7xl p-5">و كان رأيهم عننا...</h1>
+          <h1 class="textColor w-11 px-5">{{ slotProps.data.feedback }}</h1>
+          <h1 class="secondaryColor my-3 px-5">{{ slotProps.data.author }}</h1>
+          <h3 class="px-5 textColor">{{ slotProps.data.jobTitle }}</h3>
+        </div>
+        <img :src="slotProps.data.image" class="maxWidth" alt="">
+      </div>
+    </template>
+  </Carousel>
+</div>
 </div>
 
 <!-- Testimonials-Feedback Section -->
@@ -211,6 +233,7 @@ import TabView from 'primevue/tabview';
 import TabPanel from 'primevue/tabpanel';
 import HomeSlider from '@/components/home/HomeSlider.vue';
 import AppImage from '@/components/app/AppImage.vue';
+import Carousel from 'primevue/carousel';
 
 export default defineComponent({
     components: { YouTube },
@@ -222,7 +245,9 @@ export default defineComponent({
 })
 </script>
 <style>
-
+.p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
+    background-color: var(--primary-color) !important;
+}
 .p-tabview .p-tabview-panels {
   background: none !important;
 }

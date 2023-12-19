@@ -10,7 +10,7 @@
                         </div>
                     </div>
                     <div class="person">
-                        <PersonPartial :key="slotProps.item.id" :size="550" :person="slotProps.item" />
+                        <PersonPartial :key="slotProps.item.id" :size="500" :person="slotProps.item" />
                     </div>
                 </div>
             </template>
@@ -116,8 +116,14 @@ const responsiveOptions = ref([
 </script>
 <style>
 .p-galleria .p-galleria-thumbnail-container {
-    background: rgba(0, 0, 0, 0.6);
+    background: none !important;
     padding: 1rem 0.25rem;
     margin: 2vh 0 !important;
-  }
+}
+.p-galleria .p-galleria-thumbnail-container {
+    direction: ltr;
+}
+.p-galleria-thumbnail-items {
+    align-items: baseline !important;
+}
 </style>
