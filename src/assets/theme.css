@@ -91,7 +91,7 @@
 .p-link:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 0.2rem #C7D2FE;
+  /* box-shadow: 0 0 0 0.2rem #C7D2FE; */
 }
 
 .p-component-overlay-enter {
@@ -254,8 +254,8 @@
 .p-autocomplete:not(.p-disabled).p-focus .p-autocomplete-multiple-container {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 0.2rem #C7D2FE;
-  border-color: #6366F1;
+  /* box-shadow: 0 0 0 0.2rem #C7D2FE; */
+  /* border-color: #6366F1; */
 }
 .p-autocomplete .p-autocomplete-multiple-container {
   padding: 0.375rem 0.75rem;
@@ -379,7 +379,7 @@
 .p-datepicker .p-datepicker-header .p-datepicker-next:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 0.2rem #C7D2FE;
+  /* box-shadow: 0 0 0 0.2rem #C7D2FE; */
 }
 .p-datepicker .p-datepicker-header .p-datepicker-title {
   line-height: 2rem;
@@ -426,7 +426,7 @@
 .p-datepicker table td > span:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 0.2rem #C7D2FE;
+  /* box-shadow: 0 0 0 0.2rem #C7D2FE; */
 }
 .p-datepicker table td.p-datepicker-today > span {
   background: #ced4da;
@@ -465,7 +465,7 @@
 .p-datepicker .p-timepicker button:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 0.2rem #C7D2FE;
+  /* box-shadow: 0 0 0 0.2rem #C7D2FE; */
 }
 .p-datepicker .p-timepicker button:last-child {
   margin-top: 0.2em;
@@ -5523,7 +5523,7 @@
   height: 2rem;
 }
 .p-galleria .p-galleria-item-nav:not(.p-disabled):hover {
-  background: rgba(255, 255, 255, 0.1);
+  /* background: rgba(255, 255, 255, 0.1); */
   color: #f8f9fa;
 }
 .p-galleria .p-galleria-caption {
@@ -5542,11 +5542,11 @@
   border-radius: 50%;
 }
 .p-galleria .p-galleria-indicators .p-galleria-indicator button:hover {
-  background: #adb5bd;
+  /* background: #adb5bd; */
 }
 .p-galleria .p-galleria-indicators .p-galleria-indicator.p-highlight button {
-  background: #EEF2FF;
-  color: #4338CA;
+  /* background: #EEF2FF; */
+  /* color: #4338CA; */
 }
 .p-galleria.p-galleria-indicators-bottom .p-galleria-indicator, .p-galleria.p-galleria-indicators-top .p-galleria-indicator {
   margin-right: 0.5rem;
@@ -5555,20 +5555,20 @@
   margin-bottom: 0.5rem;
 }
 .p-galleria.p-galleria-indicator-onitem .p-galleria-indicators {
-  background: rgba(0, 0, 0, 0.5);
+  /* background: rgba(0, 0, 0, 0.5); */
 }
 .p-galleria.p-galleria-indicator-onitem .p-galleria-indicators .p-galleria-indicator button {
-  background: rgba(255, 255, 255, 0.4);
+  /* background: rgba(255, 255, 255, 0.4); */
 }
 .p-galleria.p-galleria-indicator-onitem .p-galleria-indicators .p-galleria-indicator button:hover {
-  background: rgba(255, 255, 255, 0.6);
+  /* background: rgba(255, 255, 255, 0.6); */
 }
 .p-galleria.p-galleria-indicator-onitem .p-galleria-indicators .p-galleria-indicator.p-highlight button {
-  background: #EEF2FF;
+  /* background: #EEF2FF; */
   color: #4338CA;
 }
 .p-galleria .p-galleria-thumbnail-container {
-  background: rgba(0, 0, 0, 0.9);
+  /* background: rgba(0, 0, 0, 0.9); */
   padding: 1rem 0.25rem;
 }
 .p-galleria .p-galleria-thumbnail-container .p-galleria-thumbnail-prev,
@@ -5589,7 +5589,7 @@
 .p-galleria .p-galleria-thumbnail-container .p-galleria-thumbnail-item-content:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 0.2rem #C7D2FE;
+  /* box-shadow: 0 0 0 0.2rem #C7D2FE; */
 }
 
 .p-galleria-mask {

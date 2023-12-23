@@ -41,6 +41,7 @@ export type Person = {
     description?: string
     rating? : number
     pricePerJob? : string
+    localImage? : boolean
 }
 
 

@@ -15,7 +15,9 @@
                 </div>
             </template>
             <template #thumbnail="slotProps">
-                <PersonPartial :person="slotProps.item" :size="{width : 200 , height : 200}" />
+                <div class="mx-2">
+                    <PersonPartial :person="slotProps.item" :size="{width : 200 , height : 200}" />
+                </div>
             </template>
         </Galleria>
     </div>
@@ -115,15 +117,33 @@ const responsiveOptions = ref([
 ]);
 </script>
 <style>
+.p-galleria-thumbnail-item-content{
+    outline: none !important;
+    background: none !important;
+}
 .p-galleria .p-galleria-thumbnail-container {
     background: none !important;
     padding: 1rem 0.25rem;
     margin: 2vh 0 !important;
+    outline: none !important;
 }
 .p-galleria .p-galleria-thumbnail-container {
     direction: ltr;
+    outline: none !important;
+    background: none !important;
+}
+.p-galleria-thumbnail-item p-galleria-thumbnail-item-active{
+    outline: none !important;
+    border: none !important;
+    background: none !important;
+}
+[data-pc-section="thumbnailitem"] {
+    outline: none !important;
+    border: none;
 }
 .p-galleria-thumbnail-items {
     align-items: baseline !important;
+    outline: none !important;
+    background: none !important;
 }
 </style>

@@ -17,29 +17,53 @@ const providerType : Ref<providerTypes> = ref()
 
 const providers : Person[] = [
 {
-    id : 1,
-    name: "شريف الليثي",
-    position : 'مصحح لغوي',
-    image: "sherif.png",
+    id: 1,
+    name: "حنان السيد",
+    image: "placeholders/placeholder2.png",
     rating : 3,
-    pricePerJob : '2.40 ج.م '
+    position : 'مصحح لغوي',
+    pricePerJob : '2.40 ج.م'
 },
 {
-    id : 2,
-    name: "عماد العادلي",
-    position : 'مصحح لغوي',
-    image: "emad.png",
+    id: 2,
+    name: "فارس سامي",
+    image: "placeholders/placeholder5.png",
     rating : 4,
-    pricePerJob : '10.00 ج.م'
+    position : 'مصحح لغوي',
+    pricePerJob : '1.40 ج.م'
 },
 {
-    id : 3,
-    name: "شريف سعيد",
-    position : 'مصحح لغوي',
-    image: "s-sa3eed.png",
+    id: 3,
+    name: "سالم حسين",
+    image: "placeholders/placeholder4.png",
     rating : 5,
+    position : 'مصحح لغوي',
     pricePerJob : '3.60 ج.م'
-}
+},
+{
+        id: 4,
+        name: "سالم حسين",
+        image: "placeholders/placeholder4.png",
+        rating : 3,
+        position : 'مصمم غلاف',
+        pricePerJob : '200.00 ج.م',
+    },
+    {
+        id: 5,
+        name: "أحمد ياسر",
+        position : 'مصمم غلاف',
+        image: "placeholders/placeholder6.png",
+        rating : 4,
+        pricePerJob : '250.00 ج.م',
+    },
+    {
+        id: 6,
+        name: "سلمي محمود",
+        position : 'مصمم غلاف',
+        image: "placeholders/placeholder3.png",
+        rating : 5,
+        pricePerJob : '380.00 ج.م',
+    },
 ]
 onMounted(() => {
 providerId.value = parseInt(currentRoute.value.params.id as string)
@@ -77,7 +101,7 @@ providerId.value = parseInt(currentRoute.value.params.id as string)
 </script>
 
 <template>
-<div class="marginRight py-5">
+<div class="marginRight py-5" style="min-height: 80vh;">
     <section v-if="provider" class="p-3 w-full">
         <div  class="flex align-items-center">
             <div class="p-3">
@@ -94,11 +118,12 @@ providerId.value = parseInt(currentRoute.value.params.id as string)
                         <h2>تأكيد الطلب</h2>
                     </div>
                     <div style="z-index: 9 !important;" @click="push(lastRoute)" class="w-15rem gredientBg text-center p-3 borderRound mt-5 mx-2 py-3 flex justify-content-center cursor-pointer">
-                        <h2>اختيار مصحح اخر</h2>
+                        <h2 v-if="providerType == 'editor'">اختيار مصحح اخر</h2>
+                        <h2 v-else>اختيار مصمم اخر</h2>
                     </div>
                 </div>
             </div>
-            <PersonPartial :size="{ width : 300 , height : 300}" :person="{id : providerId , name : provider[0].name , image : provider[0].image ,  position : provider[0].position }" />
+            <PersonPartial :size="{ width : 280 , height : 300}" :person="{id : providerId , name : provider[0].name , image : provider[0].image ,  position : provider[0].position }" />
         </div>
         <h2 class="textColor p-3 font-bold">الأعمال السابقة</h2>
         <div class="flex my-2">
@@ -121,6 +146,7 @@ providerId.value = parseInt(currentRoute.value.params.id as string)
     padding: 2rem;
     background: none;
     font-size: 18px;
+    outline: none;
 }
 .inactiveColor{
   color: #5B5044;

@@ -146,54 +146,54 @@ const BookCoverDesigns = [
 const languageEditors: Person[] = [
     {
         id: 1,
-        name: "شريف الليثي",
-        image: "sherif.png",
+        name: "حنان السيد",
+        image: "placeholders/placeholder2.png",
         rating : 3,
         pricePerJob : '2.40 ج.م / كلمة'
     },
     {
         id: 2,
-        name: "عماد العادلي",
-        image: "emad.png",
+        name: "فارس سامي",
+        image: "placeholders/placeholder5.png",
         rating : 4,
-        pricePerJob : '20.00 ج.م / كلمة'
+        pricePerJob : '1.40 ج.م / كلمة'
     },
     {
         id: 3,
-        name: "شريف سعيد",
-        image: "s-sa3eed.png",
+        name: "سالم حسين",
+        image: "placeholders/placeholder4.png",
         rating : 5,
         pricePerJob : '3.60 ج.م / كلمة'
     },
 ]
 const coverDesigners: Person[] = [
     {
-        id: 1,
-        name: "شريف الليثي",
-        image: "sherif.png",
+        id: 4,
+        name: "سالم حسين",
+        image: "placeholders/placeholder4.png",
         rating : 3,
-        pricePerJob : '200.00 ج.م / الغلاف'
+        pricePerJob : '200.00 ج.م / الغلاف',
     },
     {
-        id: 2,
-        name: "عماد العادلي",
-        image: "emad.png",
+        id: 5,
+        name: "أحمد ياسر",
+        image: "placeholders/placeholder6.png",
         rating : 4,
-        pricePerJob : '250.00 ج.م / الغلاف'
+        pricePerJob : '250.00 ج.م / الغلاف',
     },
     {
-        id: 3,
-        name: "شريف سعيد",
-        image: "s-sa3eed.png",
+        id: 6,
+        name: "سلمي محمود",
+        image: "placeholders/placeholder3.png",
         rating : 5,
-        pricePerJob : '380.00 ج.م / الغلاف'
+        pricePerJob : '380.00 ج.م / الغلاف',
     },
 ]
 
 </script>
 
 <template>
-<div class="marginRight py-5">
+<div class="marginRight py-5" style="min-height: 80vh;">
   
   <!-- Choose Book Categories -->
     <section v-if="chooseBookCategoy" class="p-3 w-full">
@@ -284,7 +284,7 @@ const coverDesigners: Person[] = [
         <div class="flex align-items-baseline">
             <div class="flex align-items-baseline mx-5 my-3 px-5">
                 <div v-for="designer in coverDesigners" @click="push({path : `/providers/${designer.id}` , query : {type : 'designer'}})" class="mx-3 cursor-pointer">
-                    <PersonPartial :person="designer" :size="{width : 200 , height : 200}"></PersonPartial>
+                    <PersonPartial :person="designer" :size="{width : 180 , height : 200}"></PersonPartial>
                 </div>
             </div>
         </div>
@@ -366,10 +366,11 @@ const coverDesigners: Person[] = [
 .wordsInput{
     width: 100%;
     border-radius: 8px;
-    border: none;
     padding: 2rem;
     background: none;
     font-size: 18px;
+    color: white;
+    border: none !important;
 }
 .inactiveColor{
   color: #5B5044;

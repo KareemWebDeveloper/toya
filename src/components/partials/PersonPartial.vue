@@ -8,6 +8,7 @@ const { image,
     name,
     position,
     rating , 
+    localImage ,
     pricePerJob } = props.person
 </script>
  <!-- zoominleft animation-duration-1000 animation-iteration-1 -->
@@ -15,7 +16,7 @@ const { image,
     <div class="person md:flex flex-column align-items-center  justify-content-center">
         <AppImage :src="props.person.image" :size="props.size" />
         <div class="py-2 w-18rem px-5 name-wrapper personHover" :class="{'gredientBg' : rating || pricePerJob}" style="background-color: #D9B58D; border-radius: 5px;">
-            <h1 class="title my-1" :class="{'text-center' : pricePerJob || rating}">{{ name }}</h1>
+            <h1 class="title my-1 cairoFont" :class="{'text-center' : pricePerJob || rating}">{{ name }}</h1>
             <div class="flex justify-content-center m-auto">
                 <Rating class="m-auto" v-if="rating" readonly v-model="props.person.rating" :cancel="false" />
             </div>
