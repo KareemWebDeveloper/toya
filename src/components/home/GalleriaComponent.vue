@@ -6,16 +6,16 @@
                 <div class="flex flex-column md:flex-row justify-content-between align-items-center slider-wrapper">
                     <div class="flex flex-column">
                         <AppImage class="logo" :size="{ width: 250 }" src="elsan3a.png"></AppImage>
-                        <div class="slider-text-wrapper font-bold" style="color: var(--text-color); font-size: 18px !important; " v-html="slotProps.item.description!">
+                        <div class="slider-text-wrapper w-11 mx-2 font-bold" style="color: var(--text-color); font-size: 18px !important; " v-html="slotProps.item.description!">
                         </div>
                     </div>
-                    <div class="person">
-                        <PersonPartial :key="slotProps.item.id" :size="500" :person="slotProps.item" />
+                    <div class="person p-3">
+                        <PersonPartial :key="slotProps.item.id" :size="{ width : 300 , height : 300}" :person="slotProps.item" />
                     </div>
                 </div>
             </template>
             <template #thumbnail="slotProps">
-                <PersonPartial :person="slotProps.item" :size="200" />
+                <PersonPartial :person="slotProps.item" :size="{width : 200 , height : 200}" />
             </template>
         </Galleria>
     </div>
