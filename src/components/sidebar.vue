@@ -36,7 +36,7 @@ function scrollToSection(sectionId : any) {
                     <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3" @click="isMobExpanded = false; push('/elmasna3');" :class="{'activeSection' : currentRoute.path.includes('elmasna3')}">
                         build
                     </span>
-                    <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3">
+                    <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3" @click="isMobExpanded = false; push('/courses');" :class="{'activeSection' : currentRoute.path.includes('courses')}">
                         engineering
                     </span>
                 </div>
@@ -54,7 +54,7 @@ function scrollToSection(sectionId : any) {
         <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3" @click="push('/elmasna3')" :class="{'activeSection' : currentRoute.path.includes('elmasna3')}">
             build
         </span>
-        <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3">
+        <span class="material-symbols-outlined cursor-pointer primaryColor text-5xl my-3" @click="push('/courses')" :class="{'activeSection' : currentRoute.path.includes('courses')}">
             engineering
         </span>
     </div>
