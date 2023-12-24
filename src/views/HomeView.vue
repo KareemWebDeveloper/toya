@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router';
 const { push , currentRoute } = useRouter();
 
 const sections : any = ref([]);
+const activePersonIndex = ref(0);
 let observer : any = null;
 let activeSectionId = '';
 const tabs = ref([
@@ -42,6 +43,83 @@ onMounted(() => {
   });
 });
 
+const persons: Person[] = [
+    {
+        id: 1,
+        name: "شريف الليثي",
+        image: "sherif.png",
+        position: "مؤسس دار تويا للنشر و التوزيع",
+        description: `<p>شريف الليثي، ناشر مصري رائد أسس دار تويا للنشر والتوزيع
+                        عام 2015.
+                        يتميز بمساهماته الفعّالة في مجالات الثقافة والأدب والفن، حيث قام بتنظيم العديد من المبادرات التي
+                        تعزز التنوع
+                        الثقافي وتعمل على نشر الفهم والتواصل في المجتمع. يعتبر الليثي شخصية مهمة في المجال النشري، حيث يسعى
+                        جاهداً
+                        لتعزيز قيم الفن والمعرفة في مصر وخارجها.
+
+                    </p>
+                    <p>
+                        بفضل رؤيته الرائعة وجهوده المستمرة، ينطلق شريف الليثي لتحقيق تحول هائل في عالم النشر والصناعة
+                        الثقافية. من
+                        خلال إطلاق "الصنعة"، يقدم الليثي منصة استثنائية توحد جميع احتياجات الصناعة تحت سقف واحد، مما يعزز
+                        التفاعل
+                        والتواصل بين الأفراد والمؤسسات في هذا القطاع المتنوع. بتجميع جميع قطع النشر على هذه المنصة، يفتح
+                        الليثي أفقًا
+                        جديدًا من التفاعل والتعاون، مما يعزز التبادل الثقافي ويسهم في نمو الصناعة. بفضل هذه المبادرة
+                        الرائدة، يمهد
+                        شريف الليثي الطريق لمستقبل مشرق حيث يتم تحقيق التكامل الكامل لكل جوانب الصناعة عبر منصة "الصنعة".
+                    </p>`
+
+    },
+    {
+        id: 2,
+        name: "عماد العادلي",
+        image: "emad.png",
+        position: "مستشار ثقافي",
+        description: `<p>
+            عماد العادلي، المستشار السابق لمكتبات "ألف" والحالي لمركز الهالة الثقافي، يعتبر رائدًا في عالم الأدب والثقافة. بنقده الدقيق وتفاعله مع 2300 كتاب، أثبت العادلي تميزه في التعامل مع مختلف أنواع الأدب، سواء الروائي أو القصصي أو الفلسفي أو البحثي. يبرز دوره في التواصل مع الأجيال المختلفة، من الستينيات حتى الألفية الجديدة، مما يجسد تفاعله الرائع مع التنوع الثقافي. بفضل خبرته وتفانيه، يترأس العادلي رؤية تجمع بين التراث الأدبي والتطلعات المعاصرة، مما يسهم في تطوير وتنوير المجتمع من خلال مساهمته المميزة.
+
+                    </p>
+                    <p>
+                      بالإضافة إلى دوره الرئيسي في مجال الأدب والثقافة، يتألق عماد العادلي كمدرب ومرشد في دورة "كيف تقرأ ... وماذا تقرأ". كمُحاضِر ملهم ومُرشد ذو خبرة واسعة، يقود العادلي هذه الدورة ببراعة، حيث يشارك مشاركيه في رحلة استكشافية فريدة لعالم الكتب والأفكار. يتفاعل العادلي مع الطلاب بطريقة تشجيعية، يحثهم على فهم أعماق النصوص واستخلاص المعاني العميقة. يقدم في هذه الدورة الأدوات والمهارات الضرورية لفهم الأدب بشكل أفضل والاستفادة القصوى من قراءاتهم. إن دوره كمدرب في هذه الدورة يسهم في بناء جيل من القراء المتميزين والفهم العميق للنصوص الأدبية.
+                    </p>`
+
+    },
+    {
+        id: 3,
+        name: "شريف سعيد",
+        image: "s-sa3eed.png",
+        position: "مستشار اقتصادي",
+        description: `<p>
+          شريف سعيد المستشار السابق لمكتبات "ألف" والحالي لمركز الهالة الثقافي، يعتبر رائدًا في عالم الأدب والثقافة. بنقده الدقيق وتفاعله مع 2300 كتاب، أثبت العادلي تميزه في التعامل مع مختلف أنواع الأدب، سواء الروائي أو القصصي أو الفلسفي أو البحثي. يبرز دوره في التواصل مع الأجيال المختلفة، من الستينيات حتى الألفية الجديدة، مما يجسد تفاعله الرائع مع التنوع الثقافي. بفضل خبرته وتفانيه، يترأس العادلي رؤية تجمع بين التراث الأدبي والتطلعات المعاصرة، مما يسهم في تطوير وتنوير المجتمع من خلال مساهمته المميزة.
+
+                    </p>
+                    <p>
+                      بالإضافة إلى دوره الرئيسي في مجال الأدب والثقافة، يتألق عماد العادلي كمدرب ومرشد في دورة "كيف تقرأ ... وماذا تقرأ". كمُحاضِر ملهم ومُرشد ذو خبرة واسعة، يقود العادلي هذه الدورة ببراعة، حيث يشارك مشاركيه في رحلة استكشافية فريدة لعالم الكتب والأفكار. يتفاعل العادلي مع الطلاب بطريقة تشجيعية، يحثهم على فهم أعماق النصوص واستخلاص المعاني العميقة. يقدم في هذه الدورة الأدوات والمهارات الضرورية لفهم الأدب بشكل أفضل والاستفادة القصوى من قراءاتهم. إن دوره كمدرب في هذه الدورة يسهم في بناء جيل من القراء المتميزين والفهم العميق للنصوص الأدبية.
+                    </p>`
+
+
+    },
+    {
+        id: 4,
+        name: "اسما علاء الدين",
+        image: "asmaa.png",
+        position: "كاتبة و طبيبة",
+        description: `<p>الدكتورة أسماء علاء الدين، كاتبة وعالمة نفس، قد انطلقت في عالم الكتابة منذ سن مبكرة، حيث أظهرت موهبتها واهتمامها بالأدب والعلوم الاجتماعية. نالت عضوية في اتحاد كتاب مصر، ومارست الكتابة العلمية والأدبية بتفرد. تتألق الدكتورة أسماء كضيفة على العديد من البرامج الإعلامية، حيث تتحدث بشكل ملهم في مجال تخصصها في علم النفس. بالإضافة إلى ذلك، قامت بتقديم عدة برامج في نفس المجال، مساهمةً في نشر الوعي النفسي والاجتماعي.
+
+تعمل حالياً الدكتورة أسماء علاء الدين كمعالجة نفسية في مستشفيات الشرطة، وتشغل أيضاً منصب عضو في اللجنة النفسية العليا للمجندين بمستشفى الشرطة في الرحاب. صدر لها عشر إصدارات، تنوعت بين الروايات والكتب العلمية في مجال علم النفس. من بين أعمالها المميزة روايات "شمال" و"سيناريو وحوار" و"عاشق البنفسج"، بالإضافة إلى كتاب "مالا نتوقعه" وغيرها. يعتبر كتاب "ملفات سرية من داخل العيادة النفسية" أحدث إصداراتها، حيث تقدم فيه رؤى عميقة حول تحليل النفس والمواضيع النفسية المعاصرة.
+                    </p>
+                   `
+    },
+
+]
+
+const scrollUp = () => {
+  window.scrollTo({
+    behavior : 'smooth',
+    top : 0
+  })
+}
 
 const handleIntersection = (entries : any) => {
   entries.forEach((entry : any) => {
@@ -63,10 +141,22 @@ const handleIntersection = (entries : any) => {
   
   <!-- el san3a main -->
   <div id="section1" class="p-3 flex flex-column md:flex-row justify-content-center">
-    <section class="hidden md:flex slider">
+    <div class="hidden md:flex slider">
       <HomeSlider />
-    </section>
+    </div>
+    <!-- Mobile Slider -->
+    <div class="flex flex-column justify-content-center md:hidden py-5 px-2 textColor text-lg font-bold">
+      <AppImage class="logo" :size="{ width: 250 }" src="elsan3a.png"></AppImage>
+      <div v-html="persons[activePersonIndex].description"></div>
+    </div>
+    <div class="flex scroll-container mx-auto md:hidden">
+      <div v-for="(person , personIndex) in persons" class="mx-3  my-2 cursor-pointer" @click="activePersonIndex = personIndex; scrollUp()"
+       :class="{'desaturate-image' : activePersonIndex != personIndex}">
+          <PersonPartial :person="person" :size="{width : 200 , height : 200}"></PersonPartial>
+      </div>
+    </div>
   </div>
+
 
   <!-- el san3a main end -->
 
@@ -91,7 +181,7 @@ const handleIntersection = (entries : any) => {
 <!-- Video-Viewer Section -->
 
 <div id="sectionHome2" v-animateonscroll="{ enterClass: 'fadein', leaveClass: 'fadeout' }" class="flex justify-content-center align-items-center animation-duration-1000 animation-ease-in-out">
-  <div class="videoViewerBg py-5">
+  <div class="darkBg py-5">
     <h1 class="secondaryColor text-7xl text-center">اعرف تويا</h1>
     <p class="text-center primaryColor">دار النشر "تويا" تعد إحدى الدور النشر البارزة في مصر</p>
     <div class="flex w-10 justify-content-center my-5 m-auto" style="max-width: 300px !important;">
@@ -111,7 +201,7 @@ const handleIntersection = (entries : any) => {
     <p class="textColor text-base md:text-xl font-bold w-11 mx-auto md:mx-0 md:w-9">"اعمل كتابك" هو تطبيق مميز مصمم لمساعدة الكتّاب والمؤلفين في إيجاد المصحح اللغوي المناسب ومصمم الغلاف المحترف لكتبهم. يهدف التطبيق إلى تسهيل عملية اختيار المصحح اللغوي المناسب الذي يمكنه تحسين اللغة والنحو والإملاء للنصوص بكفاءة عالية.
       بالإضافة إلى ذلك، يُمكنك من خلال "اعمل كتابك" الوصول إلى مجموعة من المصممين المحترفين لتصميم أغلفة الكتب، حيث يمكنك اختيار والتعامل مع مصمم يساعدك في تصميم غلاف كتابك بشكل جذاب وملهم.
     </p>
-    <div class="flex justify-content-center w-9">
+    <div class="flex justify-content-center w-full md:w-9">
       <div style="z-index: 9 !important;" @click="push('/elmasna3')" class="w-15rem gredientBg text-center p-3 borderRound my-5 py-3 flex align-items-center justify-content-center cursor-pointer">
         <h2>ابدأ دلوقتي</h2>
         <span class="material-symbols-outlined mx-3 font-bold text-3xl">
@@ -122,27 +212,29 @@ const handleIntersection = (entries : any) => {
   </div>
 </div>
 
-<div id="sectionHome3" v-animateonscroll="{ enterClass: 'fadein', leaveClass: 'fadeout' }" class="flex justify-content-center align-items-center animation-duration-1000 animation-ease-in-out marginRight py-5 my-5">
-<div style="width: 85%;" class="m-auto">
+<div id="sectionHome3" v-animateonscroll="{ enterClass: 'fadein', leaveClass: 'fadeout' }" class="flex justify-content-center align-items-center animation-duration-1000 animation-ease-in-out py-5 my-5">
+<div class="darkBg py-5">
+<div class="marginRight testominialsWidth">
   <Carousel :value="feedbacks" :numVisible="1" :numScroll="1" orientation="vertical" circular :autoplayInterval="3000" verticalViewPortHeight="500px" contentClass="flex align-items-center">
     <template #item="slotProps">
       <div class="flex flex-column justify-content-center md:flex-row">
         <div>
-          <h1 class="secondaryColor text-5xl md:text-7xl p-5">و كان رأيهم عننا...</h1>
-          <h1 class="textColor w-full md:w-11 px-1 md:px-5">{{ slotProps.data.feedback }}</h1>
-          <h1 class="secondaryColor my-3 px-5">{{ slotProps.data.author }}</h1>
-          <h3 class="px-5 textColor">{{ slotProps.data.jobTitle }}</h3>
+          <h1 class="secondaryColor text-center md:text-right text-4xl md:text-7xl p-5">و كان رأيهم عننا...</h1>
+          <h1 class="textColor text-center md:text-right w-full md:w-11 px-1 md:px-5">{{ slotProps.data.feedback }}</h1>
+          <h1 class="secondaryColor text-center md:text-right my-3 px-5">{{ slotProps.data.author }}</h1>
+          <h3 class="px-5 text-center md:text-right textColor">{{ slotProps.data.jobTitle }}</h3>
         </div>
-        <img :src="slotProps.data.image" class="maxWidth" alt="">
+        <img :src="slotProps.data.image" class="maxWidth mx-auto md:mx-0" alt="">
       </div>
     </template>
   </Carousel>
 </div>
 </div>
+</div>
 
 <!-- Testimonials-Feedback Section -->
 <div id="sectionHome4" v-animateonscroll="{ enterClass: 'zoomin', leaveClass: 'fadeout' }" class="flex justify-content-center align-items-center animation-duration-1000 animation-ease-in-out marginRight py-5 my-5">
-    <div class="p-5">
+    <div class="p-5 ">
       <h1 class="primaryColor text-5xl my-3 md:my-0 md:text-7xl">شاركونا نجاحنا</h1>
       <p class="textColor textCenter w-12 md:w-10">هتتبنى دار النشر "تويا" استراتيجية نشر تتميز بالجودة والتنوع، حيث
          تسعى لاختيار المواضيع المتميزة والمؤلفين المبدعين والمتخصصين في مجالاتهم. بالإضافة 
@@ -169,6 +261,8 @@ import TabPanel from 'primevue/tabpanel';
 import HomeSlider from '@/components/home/HomeSlider.vue';
 import AppImage from '@/components/app/AppImage.vue';
 import Carousel from 'primevue/carousel';
+import type { Person } from '@/types/types';
+import PersonPartial from '@/components/partials/PersonPartial.vue';
 
 export default defineComponent({
     components: { YouTube },
@@ -180,6 +274,9 @@ export default defineComponent({
 })
 </script>
 <style>
+.desaturate-image {
+  filter: saturate(0.25);
+}
 .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
     background-color: var(--primary-color) !important;
 }
@@ -202,7 +299,7 @@ export default defineComponent({
 .p-tabview .p-tabview-nav li .p-tabview-nav-link {
   background: none !important;
 }
-.videoViewerBg{
+.darkBg{
   background-color: rgb(16,18,20);
 }
 .inactiveColor{
@@ -223,9 +320,15 @@ export default defineComponent({
 .p-carousel-items-content {
   height: 500px !important;
 }
+.testominialsWidth{
+  width: 85%;
+}
 @media screen and (max-width : 600px) {
   .marginRight{
     margin-right: 0;
+  }
+  .testominialsWidth{
+    width: 100%;
   }
   .justifyCenter{
     justify-content: start;
@@ -240,7 +343,7 @@ export default defineComponent({
     text-align: center;
   }
   .p-carousel-items-content {
-    height: 820px !important;
+    height: 680px !important;
   }
   .scroll-container {
     overflow-x: auto !important; /* Enable horizontal scrolling */

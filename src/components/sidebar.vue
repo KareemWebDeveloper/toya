@@ -17,13 +17,13 @@ function scrollToSection(sectionId : any) {
 <template>
     <div class="w-full" style="direction: rtl;">
         <!-- <div class="fixed " @click="isMobExpanded = true" style="top: 2vh; right: 2vh; z-index: 999;"> -->
-            <span @click="isMobExpanded = true" class="material-symbols-outlined fixed cursor-pointer text-6xl flex md:hidden primaryColor font-bold" style="top: 2vh; right: 2vh; z-index: 999;">
+            <span v-if="!isMobExpanded" @click="isMobExpanded = true" class="material-symbols-outlined fixed cursor-pointer text-6xl flex md:hidden primaryColor font-bold" style="top: 2vh; right: 2vh; z-index: 999;">
                 menu
             </span>
         <!-- </div> -->
-        <Sidebar v-model:visible="isMobExpanded" :position="'left'">
+        <nav v-if="isMobExpanded" style="z-index: 99999 !important;" class="flipleft animation-duration-300 animation-iteration-1">
             <div class="mobSideBar expanded">
-              <span class="material-symbols-outlined textColor p-3 text-4xl" @click="isMobExpanded = false">
+              <span class="material-symbols-outlined textColor my-2 p-3 text-4xl" @click="isMobExpanded = false">
                 close
               </span>
                 <div class="flex flex-column text-center py-2">
@@ -41,7 +41,7 @@ function scrollToSection(sectionId : any) {
                     </span>
                 </div>
             </div>
-        </Sidebar>
+        </nav>
     </div>
     <div class="hidden md:flex gredBg py-5 px-3 w-7rem flex-column justify-content-center align-items-center">
         <img  src="../images/logo.png" class="w-6 absolute" style="top: 5vh;" alt="">
@@ -116,8 +116,8 @@ function scrollToSection(sectionId : any) {
     height: 100vh;
     position: fixed;
     top: 0;
-    right: 0;
-    z-index: 9;
+    right: 2px !important;
+    z-index: 99999;
     transition: width 0.3s ease;
     overflow-y: auto;
   }
@@ -125,6 +125,9 @@ function scrollToSection(sectionId : any) {
       .image-overlay {
           right: 1%;
     }
-    
+    .p-component-overlay-enter {
+        right: -100px;
+        background: none !important;
+    }
   }
 </style>

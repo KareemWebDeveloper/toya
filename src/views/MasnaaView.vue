@@ -13,6 +13,8 @@ const chooseCoverDesigner = ref(false)
 const chooseCoverType = ref(false)
 const submitOrder = ref(false)
 const wordsCount = ref()
+const cart = JSON.parse(localStorage.getItem('elsan3a_cart') as string)
+
 onMounted(() => {
   window.scrollTo({
     top : 0,
@@ -190,6 +192,15 @@ const coverDesigners: Person[] = [
     },
 ]
 
+const setBookWordsCount = () => {
+    let cart = {
+        wordsCount : wordsCount.value,
+        bookDesigner : {},
+        languageEditor : {}
+    }
+    localStorage.setItem('elsan3a_cart' , JSON.stringify(cart))
+}
+
 </script>
 
 <template>
@@ -198,12 +209,12 @@ const coverDesigners: Person[] = [
   <!-- Choose Book Categories -->
     <section v-if="chooseBookCategoy" class="p-3 w-full">
         <h1 class="secondaryColor text-5xl md:text-7xl p-5">اختار نوع الكتاب</h1>
-        <div class="flex flex-wrap">
+        <div class="flex flex-wrap justify-content-center md:justify-content-start">
             <div v-for="category in BookCategories">
                 <BookCategory class="m-3" :category="category.category" :icon="category.icon"></BookCategory>
             </div>
         </div>
-        <div class="w-10 flex justify-content-end align-items-center">
+        <div class="w-12 md:w-10 flex justify-content-end align-items-center">
             <div style="z-index: 9 !important;" @click="chooseWordsCounts = true; chooseBookCategoy = false;" class="w-10rem md:w-2 gredientBg text-center p-3 borderRound my-5 py-3 flex justify-content-center cursor-pointer">
                 <h2>التالي</h2>
                 <span class="material-symbols-outlined mx-3 font-bold text-3xl">
@@ -224,8 +235,8 @@ const coverDesigners: Person[] = [
             </div>
             <h5 class="underline secondaryColor cursor-pointer" style="margin: 1vh 6vh;">أعرف عدد كلمات كتابي ازاي؟</h5>
         </div>
-        <div class="w-10 flex justify-content-end ">
-            <div style="z-index: 9 !important;" @click="chooseWordsCounts = false; chooseLanguageEditor = true;" class="w-10rem md:w-2 gredientBg text-center p-3 borderRound my-5 py-3 flex  align-items-center justify-content-center cursor-pointer">
+        <div class="w-12 md:w-10 flex justify-content-end ">
+            <div style="z-index: 9 !important;" @click="setBookWordsCount(); chooseWordsCounts = false; chooseLanguageEditor = true;" class="w-10rem md:w-2 gredientBg text-center p-3 borderRound my-5 py-3 flex  align-items-center justify-content-center cursor-pointer">
                 <h2>التالي</h2>
                 <span class="material-symbols-outlined mx-3 font-bold text-3xl">
                 keyboard_backspace
@@ -237,12 +248,12 @@ const coverDesigners: Person[] = [
   <!-- Choose Language Editor -->
   <section v-if="chooseLanguageEditor" class="p-3 w-full">
         <h1 class="secondaryColor text-4xl md:text-8xl p-5">اختار مصحح لغوي</h1>
-        <div class="flex flex-wrap md:flex-nowrap justify-content-center align-items-baseline mx-5 my-3 px-5">
+        <div class="flex flex-wrap md:flex-nowrap justify-content-center md:justify-content-start align-items-baseline mx-5 my-3 px-5">
             <div v-for="person in languageEditors" @click="push({path : `/providers/${person.id}` , query : {type : 'editor'}})" class="mx-3  my-2 cursor-pointer">
                 <PersonPartial :person="person" :size="{width : 200 , height : 200}"></PersonPartial>
             </div>
         </div>
-        <div class="w-10 flex justify-content-end ">
+        <div class="w-12 md:w-10 flex justify-content-end ">
             <div style="z-index: 9 !important;" @click="chooseLanguageEditor = false; chooseCoverType = true;" class="w-10rem md:w-2 gredientBg text-center p-3 borderRound my-5 py-3 flex align-items-center justify-content-center cursor-pointer">
                 <h2>التالي</h2>
                 <span class="material-symbols-outlined mx-3 font-bold text-3xl">
@@ -254,13 +265,13 @@ const coverDesigners: Person[] = [
 
       <!-- Choose Cover Type -->
     <section v-if="chooseCoverType" class="p-3 w-full">
-        <h1 class="secondaryColor text-5xl md:text-8xl p-5">اختار نوع الغلاف</h1>
-        <div class="flex flex-wrap">
+        <h1 class="secondaryColor text-center md:text-right text-5xl md:text-8xl p-5">اختار نوع الغلاف</h1>
+        <div class="flex flex-wrap justify-content-center md:justify-content-start">
             <div v-for="category in BookCoverDesigns">
                 <BookCategory class="m-3" :category="category.category" :icon="category.icon"></BookCategory>
             </div>
         </div>
-        <div class="w-10 flex justify-content-end ">
+        <div class="w-12 md:w-10 flex justify-content-end ">
             <div style="z-index: 9999 !important;" @click="chooseCoverType = false; chooseCoverDesigner = true;" class="w-10rem md:w-2 gredientBg text-center p-3 borderRound my-5 py-3 flex align-items-center justify-content-center cursor-pointer">
                 <h2>التالي</h2>
                 <span class="material-symbols-outlined mx-3 font-bold text-3xl">
@@ -272,13 +283,13 @@ const coverDesigners: Person[] = [
 
   <!-- Choose Book Cover Designer -->
   <section v-if="chooseCoverDesigner" class="p-3 w-full">
-        <h1 class="secondaryColor text-4xl md:text-8xl p-5">اختار مصمم للغلاف</h1>
+        <h1 class="secondaryColor text-center md:text-right text-4xl md:text-8xl p-5">اختار مصمم للغلاف</h1>
             <div class="flex flex-wrap md:flex-nowrap justify-content-center md:justify-content-start align-items-baseline mx-5 my-3 px-5">
                 <div v-for="designer in coverDesigners" @click="push({path : `/providers/${designer.id}` , query : {type : 'designer'}})" class="my-2 mx-3 cursor-pointer">
                     <PersonPartial :person="designer" :size="{width : 180 , height : 200}"></PersonPartial>
                 </div>
             </div>
-        <div class="w-10 flex justify-content-end ">
+        <div class="w-12 md:w-10 flex justify-content-end ">
             <div style="z-index: 9999 !important;" @click="chooseCoverDesigner = false; submitOrder = true;" class="w-10rem md:w-2 gredientBg text-center p-3 borderRound my-5 py-3 flex align-items-center justify-content-center cursor-pointer">
                 <h2>التالي</h2>
                 <span class="material-symbols-outlined mx-3 font-bold text-3xl">
@@ -312,23 +323,24 @@ const coverDesigners: Person[] = [
             </div>
             <div class="mx-5  w-full md:w-max p-3 borderRound" style="background-color: rgba(255, 255, 255, 0.075);">
                 <h1 class="secondaryColor text-3xl md:text-4xl p-5">حصيلة الطلب</h1>
-                <div class="p-3 borderRound flex align-items-center" style="background-color: rgba(255, 255, 255, 0.075);">
-                    <AppImage src="emad.png" :size="120" />
+                <div v-if="cart.languageEditor && cart.languageEditor.length > 0" class="p-3 borderRound flex align-items-center" style="background-color: rgba(255, 255, 255, 0.075);">
+                    <AppImage :src="cart.languageEditor[0].image" :size="120" />
                     <div>
-                        <p class="secondaryColor text-xl">تصحيح لغوي من قبل عماد العادلي .</p>
-                        <p class="secondaryColor my-1">٣٤٥٢ كلمة</p>
+                        <p class="secondaryColor text-xl">تصحيح لغوي من قبل {{ cart.languageEditor[0].name }} .</p>
+                        <p class="secondaryColor my-1" v-if="cart.wordsCount">{{ (parseFloat(cart.languageEditor[0].pricePerJob) * parseFloat(cart.wordsCount)).toFixed(2) }} ج.م / {{ cart.wordsCount }} كلمة</p>
+                        <p class="secondaryColor my-1" v-else>0 كلمة</p>
                     </div>
                 </div>
-                <div class="p-3 borderRound my-2 flex align-items-center" style="background-color: rgba(255, 255, 255, 0.075);">
-                    <AppImage src="sherif.png" :size="110" />
+                <div v-if="cart.bookDesigner && cart.bookDesigner.length > 0" class="p-3 borderRound my-2 flex align-items-center" style="background-color: rgba(255, 255, 255, 0.075);">
+                    <AppImage :src="cart.bookDesigner[0].image" :size="110" />
                     <div>
-                        <p class="secondaryColor text-xl">تصميم غلاف من قبل شريف الليثي .</p>
-                        <p class="secondaryColor my-1">٣٤٥٢ كلمة</p>
+                        <p class="secondaryColor text-xl">تصميم غلاف من قبل {{ cart.bookDesigner[0].name }} .</p>
+                        <p class="secondaryColor my-1">{{ cart.languageEditor[0].pricePerJob }} ج.م</p>
                     </div>
                 </div>
                 <div class="p-3 borderRound my-5 flex align-items-center justify-content-between" style="background-color: rgba(255, 255, 255, 0.075);">
                     <p class="secondaryColor text-2xl">الاجمالي</p>
-                    <h2 class="primaryColor">24,712 ج.م</h2>
+                    <h2 class="primaryColor">{{ parseFloat(cart.languageEditor[0].pricePerJob) * parseFloat(cart.wordsCount) + parseFloat(cart.languageEditor[0].pricePerJob) }} ج.م</h2>
                 </div>
             </div>
         </div>

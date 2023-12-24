@@ -22,7 +22,7 @@ const providers : Person[] = [
     image: "placeholders/placeholder2.png",
     rating : 3,
     position : 'مصحح لغوي',
-    pricePerJob : '2.40 ج.م'
+    pricePerJob : 2.40
 },
 {
     id: 2,
@@ -30,7 +30,7 @@ const providers : Person[] = [
     image: "placeholders/placeholder5.png",
     rating : 4,
     position : 'مصحح لغوي',
-    pricePerJob : '1.40 ج.م'
+    pricePerJob : 1.40
 },
 {
     id: 3,
@@ -38,7 +38,7 @@ const providers : Person[] = [
     image: "placeholders/placeholder4.png",
     rating : 5,
     position : 'مصحح لغوي',
-    pricePerJob : '3.60 ج.م'
+    pricePerJob : 3.60
 },
 {
         id: 4,
@@ -46,7 +46,7 @@ const providers : Person[] = [
         image: "placeholders/placeholder4.png",
         rating : 3,
         position : 'مصمم غلاف',
-        pricePerJob : '200.00 ج.م',
+        pricePerJob : 200
     },
     {
         id: 5,
@@ -54,7 +54,7 @@ const providers : Person[] = [
         position : 'مصمم غلاف',
         image: "placeholders/placeholder6.png",
         rating : 4,
-        pricePerJob : '250.00 ج.م',
+        pricePerJob : 250
     },
     {
         id: 6,
@@ -62,7 +62,7 @@ const providers : Person[] = [
         position : 'مصمم غلاف',
         image: "placeholders/placeholder3.png",
         rating : 5,
-        pricePerJob : '380.00 ج.م',
+        pricePerJob : 380
     },
 ]
 onMounted(() => {
@@ -97,6 +97,27 @@ providerId.value = parseInt(currentRoute.value.params.id as string)
   }
 })
 
+const setProvider = () => {
+  if(localStorage.getItem('elsan3a_cart')){
+    let cart = JSON.parse(localStorage.getItem('elsan3a_cart') as string)
+    console.log(cart , 'exists');
+    if(providerType.value == 'designer'){
+      cart.bookDesigner = provider.value
+    }
+    else{
+      cart.languageEditor = provider.value
+    }
+    localStorage.setItem('elsan3a_cart' , JSON.stringify(cart))
+  }
+  else{
+    let cart = {
+      bookDesigner : providerType.value == 'designer' ? provider.value : {},
+      languageEditor : providerType.value == 'editor' ? provider.value : {}
+    }
+    console.log(cart , 'new');
+    localStorage.setItem('elsan3a_cart' , JSON.stringify(cart))
+  }
+}
 
 </script>
 
@@ -109,12 +130,12 @@ providerId.value = parseInt(currentRoute.value.params.id as string)
                 <h1 v-else class="secondaryColor text-5xl md:text-7xl">اختار مصمم للغلاف</h1>
                 <p class="my-5 textColor text-base font-bold w-12 md:w-10">مصحح لغوي ذو خبرة كبيرة. صحح اكثر من ١٠٠ كتاب. جاهز للبدأ في تصحيح كتابك في اي وقت و تسليمه في اسرع وقت ممكن.</p>
                 <div class="flex my-3 providers">
-                    <h3 v-if="providerType == 'editor'" class="primaryColor mx-3">{{ provider[0].pricePerJob }} / كلمة</h3>
-                    <h3 v-else class="primaryColor mx-3">{{ provider[0].pricePerJob }} / غلاف</h3>
+                    <h3 v-if="providerType == 'editor'" class="primaryColor mx-3">{{ provider[0].pricePerJob }} ج.م / كلمة</h3>
+                    <h3 v-else class="primaryColor mx-3">{{ provider[0].pricePerJob }} ج.م / غلاف</h3>
                     <Rating readonly v-model="provider[0].rating" :cancel="false" />
                 </div>
                 <div class="flex flex-column md:flex-row my-3">
-                    <div style="z-index: 9 !important;" @click="push(redirectRoute)" class="w-15rem gredientBg text-center p-3 borderRound mt-5 mx-auto md:mx-2 py-3 flex justify-content-center cursor-pointer">
+                    <div style="z-index: 9 !important;" @click="setProvider();push(redirectRoute)" class="w-15rem gredientBg text-center p-3 borderRound mt-5 mx-auto md:mx-2 py-3 flex justify-content-center cursor-pointer">
                         <h2>تأكيد الطلب</h2>
                     </div>
                     <div style="z-index: 9 !important;" @click="push(lastRoute)" class="w-15rem gredientBg text-center p-3 borderRound mt-5 mx-auto md:mx-2 py-3 flex justify-content-center cursor-pointer">
