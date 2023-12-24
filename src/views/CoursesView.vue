@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import {ref ,onMounted } from 'vue'
+import { ref, onMounted, h } from 'vue';
 import { useRouter } from 'vue-router';
-import BookCategory from '@/components/partials/BookCategoryPartial.vue';
 const { push , currentRoute } = useRouter();
 import PersonPartial from '../components/partials/PersonPartial.vue';
 import type { Person } from '../types/types';
 import AppImage from '@/components/app/AppImage.vue';
 import type { Ref } from 'vue';
-import Rating from 'primevue/rating';
-const redirectRoute : any = ref()
-const lastRoute : any = ref()
+
+type sectionTypes = 'goals' | 'hours' | 'details' | undefined
+const activeSection : Ref<sectionTypes> = ref('details')
 
 const lecturers : Person[] = [
 {
@@ -67,20 +66,72 @@ onMounted(() => {
                 <PersonPartial :size="{ width : 280 , height : 300}" :person="lecturer" />
             </div>
         </div>
-        <h1 class="secondaryColor text-5xl my-5 md:text-5xl p-3 my-3 font-bold">ماذا ستتعلم في هذه الدورة؟</h1>
-        <p class="my-5 px-4 textColor text-base font-bold w-12 md:w-10">إدارة المال تعد أحد أهم الجوانب في الحياة الشخصية والأعمال. فهي تلعب دوراً حاسماً في نجاح المشاريع والأعمال بشكل فعّال. يُعتبر فهم كيفية إدارة المال والموارد المتاحة وتوجيهها نحو أهداف محددة أمراً بالغ الأهمية لضمان استدامة النجاح.<br>
-            <br>
-            تأتي الدورات المتخصصة في إدارة المال لتعليم الأساليب والاستراتيجيات التي يمكن للأفراد والشركات اتباعها لتحقيق أهدافهم المالية بشكل فعال ومستدام. تشمل هذه الدورات مجموعة واسعة من المواضيع، بدءاً من مبادئ الإدارة المالية الأساسية، وصولاً إلى تقنيات تحليل الاستثمارات وتخطيط الميزانية وإدارة الديون.
-            <br>
-            <br>
-            يتميز مضمون الدورات بتوفير معرفة عميقة حول كيفية تقييم الاحتياجات المالية، وتحديد الأولويات، وتحديد مصادر التمويل المناسبة. كما تعطي الأدوات والمهارات الضرورية لتقييم الاستثمارات وإدارة المخاطر المالية بكفاءة.
-            <br>
-            <br>
-            بفضل توجيه الخبراء الماليين ذوي الخبرة الذين يقودون هذه الدورات، يمكن للمشاركين الاستفادة من تجاربهم وتوجيهاتهم القيمة التي تساعدهم على فهم السوق المالية واتخاذ القرارات المالية الصائبة.
-            <br>
-            
-            في النهاية، تلعب إدارة المال دوراً حاسماً في تحقيق النجاح والاستمرارية في الأعمال والحياة الشخصية، إذ تمثل الوسيلة الرئيسية لتحقيق الأهداف وتحقيق الاستقرار المالي.
+        <div class="header flex text-center flex-column md:flex-row align-items-center p-3 my-5">
+          <h1 class="secondaryColor my-2 cursor-pointer sectionTitle font-bold" :class="{'text-5xl md:text-6xl' : activeSection == 'details'}"
+           @click="activeSection = 'details'">ماذا ستتعلم في هذه الدورة؟</h1>
+          <div class="secondaryBg w-5rem" style="height: 3px;"></div>
+          <h1 class="secondaryColor my-2 cursor-pointer sectionTitle font-bold" :class="{'text-5xl md:text-6xl' : activeSection == 'goals'}"
+           @click="activeSection = 'goals'">الأهداف</h1>
+          <div class="secondaryBg w-5rem" style="height: 3px;"></div>
+          <h1 class="secondaryColor my-2 cursor-pointer sectionTitle font-bold" :class="{'text-5xl md:text-6xl' : activeSection == 'hours'}"
+           @click="activeSection = 'hours'">الساعات</h1>
+        </div>
+
+        <div v-if="activeSection == 'details'">
+          <p class="my-5 px-4 textColor text-base font-bold w-12 md:w-10">إدارة المال تعد أحد أهم الجوانب في الحياة الشخصية والأعمال. فهي تلعب دوراً حاسماً في نجاح المشاريع والأعمال بشكل فعّال. يُعتبر فهم كيفية إدارة المال والموارد المتاحة وتوجيهها نحو أهداف محددة أمراً بالغ الأهمية لضمان استدامة النجاح.<br>
+              <br>
+              تأتي الدورات المتخصصة في إدارة المال لتعليم الأساليب والاستراتيجيات التي يمكن للأفراد والشركات اتباعها لتحقيق أهدافهم المالية بشكل فعال ومستدام. تشمل هذه الدورات مجموعة واسعة من المواضيع، بدءاً من مبادئ الإدارة المالية الأساسية، وصولاً إلى تقنيات تحليل الاستثمارات وتخطيط الميزانية وإدارة الديون.
+              <br>
+              <br>
+              يتميز مضمون الدورات بتوفير معرفة عميقة حول كيفية تقييم الاحتياجات المالية، وتحديد الأولويات، وتحديد مصادر التمويل المناسبة. كما تعطي الأدوات والمهارات الضرورية لتقييم الاستثمارات وإدارة المخاطر المالية بكفاءة.
+              <br>
+              <br>
+              بفضل توجيه الخبراء الماليين ذوي الخبرة الذين يقودون هذه الدورات، يمكن للمشاركين الاستفادة من تجاربهم وتوجيهاتهم القيمة التي تساعدهم على فهم السوق المالية واتخاذ القرارات المالية الصائبة.
+              <br>
+              في النهاية، تلعب إدارة المال دوراً حاسماً في تحقيق النجاح والاستمرارية في الأعمال والحياة الشخصية، إذ تمثل الوسيلة الرئيسية لتحقيق الأهداف وتحقيق الاستقرار المالي.
+          </p>
+        </div>
+        <p v-if="activeSection == 'goals'" class="my-5 px-4 textColor text-base font-bold w-12 md:w-10">
+            <ol>
+              <li class="my-2">المالي ووضع الميزانيات وصولاً إلى تحليل الاستثمارات وإدارة الديون.</li>
+              <li class="my-2">
+                تحليل الاستثمارات: توفير المعرفة والأدوات اللازمة لتقييم الاستثمارات المختلفة، سواء كانت في الأسهم أو العقارات أو أسواق الأوراق المالية الأخرى، مع التركيز على كيفية اتخاذ القرارات الاستثمارية الصائبة.
+              </li>
+              <li class="my-2">تخطيط الميزانية وإدارة الديون: تعليم الطرق الفعالة لوضع الميزانيات الشخصية أو الخاصة بالشركات، بالإضافة إلى كيفية إدارة الديون بشكل مستدام والحفاظ على استقرار مالي مستقبلي.</li>
+              <li class="my-2">
+إدارة المخاطر المالية: فهم كيفية التعامل مع المخاطر المالية المحتملة وتقييمها وإدارتها بشكل فعّال لتقليل المخاطر وتحقيق أهداف الاستثمار بشكل أفضل. 
+              </li>
+              <li class="my-2">
+                تطوير مهارات اتخاذ القرارات المالية: تعزيز مهارات اتخاذ القرارات الفعّالة والصحيحة فيما يتعلق بالاستثمارات المالية والتخطيط المالي الشخصي أو الأعمال.
+              </li>
+            </ol>
         </p>
+        <div class="w-12 md:w-8 textColor" v-if="activeSection == 'hours'">
+          <div class="my-2 flex align-items-center justify-content-between">
+            <p>
+                "مبادئ تخطيط الميزانية وضبط النفقات: كيفية وضع ميزانية فعالة وإدارة النفقات بذكاء"
+            </p>
+            <h4 class="p-2 text-white px-3" style="background-color: rgba(255, 255, 255, 0.055);">12 ساعة</h4>
+          </div>
+          <div class="my-2 flex align-items-center justify-content-between">
+            <p>
+              "تقييم الاستثمارات: أساسيات اتخاذ القرارات الاستثمارية الناجحة"
+            </p>
+            <h4 class="p-2 text-white px-3" style="background-color: rgba(255, 255, 255, 0.055);">12 ساعة</h4>
+          </div>
+          <div class="my-2 flex align-items-center justify-content-between">
+            <p>
+              "إدارة الديون والتمويل: استراتيجيات فعّالة للتعامل مع الديون وتحقيق الاستقرار المالي"
+            </p>
+            <h4 class="p-2 text-white px-3" style="background-color: rgba(255, 255, 255, 0.055);">12 ساعة</h4>
+          </div>
+          <div class="my-2 flex align-items-center justify-content-between">
+            <p>
+              "التحليل المالي: كيفية قراءة التقارير المالية وتحليل الأداء المالي للشركات والأفراد"
+            </p>
+            <h4 class="p-2 text-white px-3" style="background-color: rgba(255, 255, 255, 0.055);">12 ساعة</h4>
+          </div>
+        </div>
 
          <!-- Order Review and Submitting -->
   <div class="p-1 md:p-3 w-full">
@@ -124,6 +175,12 @@ onMounted(() => {
 </div>
 </template>
 <style>
+.sectionTitle{
+  transition-duration: 0.2s;
+}
+.sectionTitle:hover{
+  color: var(--primary-color);
+}
 .formkit-label{
     color: var(--primary-color) !important;
     margin: 1vh !important;
@@ -194,3 +251,9 @@ input{
   }
 }
 </style>
+المالي ووضع الميزانيات وصولاً إلى تحليل الاستثمارات وإدارة الديون.
+تحليل الاستثمارات: توفير المعرفة والأدوات اللازمة لتقييم الاستثمارات المختلفة، سواء كانت في الأسهم أو العقارات أو أسواق الأوراق المالية الأخرى، مع التركيز على كيفية اتخاذ القرارات الاستثمارية الصائبة.
+تخطيط الميزانية وإدارة الديون: تعليم الطرق الفعالة لوضع الميزانيات الشخصية أو الخاصة بالشركات، بالإضافة إلى كيفية إدارة الديون بشكل مستدام والحفاظ على استقرار مالي مستقبلي.
+إدارة المخاطر المالية: فهم كيفية التعامل مع المخاطر المالية المحتملة وتقييمها وإدارتها بشكل فعّال لتقليل المخاطر وتحقيق أهداف الاستثمار بشكل أفضل.
+تطوير مهارات اتخاذ القرارات المالية: تعزيز مهارات اتخاذ القرارات الفعّالة والصحيحة فيما يتعلق بالاستثمارات المالية والتخطيط المالي الشخصي أو الأعمال.
+التوجيه والمشورة من الخبراء الماليين: تقديم فرصة للمشاركين للتواصل مع خبراء ماليين ذوي خبرة والاستفادة من معرفتهم ونصائحهم في مجال إدارة المال.
