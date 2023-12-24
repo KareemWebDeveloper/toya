@@ -335,12 +335,12 @@ const setBookWordsCount = () => {
                     <AppImage :src="cart.bookDesigner[0].image" :size="110" />
                     <div>
                         <p class="secondaryColor text-xl">تصميم غلاف من قبل {{ cart.bookDesigner[0].name }} .</p>
-                        <p class="secondaryColor my-1">{{ cart.languageEditor[0].pricePerJob }} ج.م</p>
+                        <p class="secondaryColor my-1">{{ parseFloat(cart.bookDesigner[0].pricePerJob).toFixed(2) }} ج.م</p>
                     </div>
                 </div>
                 <div class="p-3 borderRound my-5 flex align-items-center justify-content-between" style="background-color: rgba(255, 255, 255, 0.075);">
                     <p class="secondaryColor text-2xl">الاجمالي</p>
-                    <h2 class="primaryColor">{{ parseFloat(cart.languageEditor[0].pricePerJob) * parseFloat(cart.wordsCount) + parseFloat(cart.languageEditor[0].pricePerJob) }} ج.م</h2>
+                    <h2 class="primaryColor">{{ parseFloat(cart.languageEditor[0].pricePerJob) * parseFloat(cart.wordsCount) + parseFloat(cart.bookDesigner[0].pricePerJob) }} ج.م</h2>
                 </div>
             </div>
         </div>
