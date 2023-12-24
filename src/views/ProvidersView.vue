@@ -103,21 +103,21 @@ providerId.value = parseInt(currentRoute.value.params.id as string)
 <template>
 <div class="marginRight py-5" style="min-height: 80vh;">
     <section v-if="provider" class="p-3 w-full">
-        <div  class="flex align-items-center">
+        <div class="flex flex-column md:flex-row align-items-center">
             <div class="p-3">
                 <h1 v-if="providerType == 'editor'" class="secondaryColor text-5xl md:text-7xl">اختار مصحح لغوي</h1>
                 <h1 v-else class="secondaryColor text-5xl md:text-7xl">اختار مصمم للغلاف</h1>
-                <p class="my-5 textColor text-base font-bold w-10">مصحح لغوي ذو خبرة كبيرة. صحح اكثر من ١٠٠ كتاب. جاهز للبدأ في تصحيح كتابك في اي وقت و تسليمه في اسرع وقت ممكن.</p>
+                <p class="my-5 textColor text-base font-bold w-12 md:w-10">مصحح لغوي ذو خبرة كبيرة. صحح اكثر من ١٠٠ كتاب. جاهز للبدأ في تصحيح كتابك في اي وقت و تسليمه في اسرع وقت ممكن.</p>
                 <div class="flex my-3 providers">
                     <h3 v-if="providerType == 'editor'" class="primaryColor mx-3">{{ provider[0].pricePerJob }} / كلمة</h3>
                     <h3 v-else class="primaryColor mx-3">{{ provider[0].pricePerJob }} / غلاف</h3>
                     <Rating readonly v-model="provider[0].rating" :cancel="false" />
                 </div>
-                <div class="flex my-3">
-                    <div style="z-index: 9 !important;" @click="push(redirectRoute)" class="w-15rem gredientBg text-center p-3 borderRound mt-5 mx-2 py-3 flex justify-content-center cursor-pointer">
+                <div class="flex flex-column md:flex-row my-3">
+                    <div style="z-index: 9 !important;" @click="push(redirectRoute)" class="w-15rem gredientBg text-center p-3 borderRound mt-5 mx-auto md:mx-2 py-3 flex justify-content-center cursor-pointer">
                         <h2>تأكيد الطلب</h2>
                     </div>
-                    <div style="z-index: 9 !important;" @click="push(lastRoute)" class="w-15rem gredientBg text-center p-3 borderRound mt-5 mx-2 py-3 flex justify-content-center cursor-pointer">
+                    <div style="z-index: 9 !important;" @click="push(lastRoute)" class="w-15rem gredientBg text-center p-3 borderRound mt-5 mx-auto md:mx-2 py-3 flex justify-content-center cursor-pointer">
                         <h2 v-if="providerType == 'editor'">اختيار مصحح اخر</h2>
                         <h2 v-else>اختيار مصمم اخر</h2>
                     </div>
@@ -126,11 +126,11 @@ providerId.value = parseInt(currentRoute.value.params.id as string)
             <PersonPartial :size="{ width : 280 , height : 300}" :person="{id : providerId , name : provider[0].name , image : provider[0].image ,  position : provider[0].position }" />
         </div>
         <h2 class="textColor p-3 font-bold">الأعمال السابقة</h2>
-        <div class="flex my-2">
-            <img src="../images/book1.png" class="w-2 mx-4 max-w-7rem" alt="">
-            <img src="../images/book2.png" class="w-2 mx-4 max-w-7rem" alt="">
-            <img src="../images/book3.png" class="w-2 mx-4 max-w-7rem" alt="">
-            <img src="../images/book4.png" class="w-2 mx-4 max-w-7rem" alt="">
+        <div class="flex justify-content-center md:justify-content-start flex-wrap md:flex-nowrap my-2">
+            <img src="../images/book1.png" class="w-2 mx-2 md:mx-4 my-2 max-w-7rem" alt="">
+            <img src="../images/book2.png" class="w-2 mx-2 md:mx-4 my-2 max-w-7rem" alt="">
+            <img src="../images/book3.png" class="w-2 mx-2 md:mx-4 my-2 max-w-7rem" alt="">
+            <img src="../images/book4.png" class="w-2 mx-2 md:mx-4 my-2 max-w-7rem" alt="">
         </div>
     </section>
 </div>

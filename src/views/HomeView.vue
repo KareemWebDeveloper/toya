@@ -108,7 +108,7 @@ const handleIntersection = (entries : any) => {
 <div v-animateonscroll="{ enterClass: 'fadein', leaveClass: 'fadeout' }" class="flex justify-content-center align-items-center animation-duration-1000 animation-ease-in-out">
   <div class="p-2 md:p-5 marginRight my-5">
     <h1 class="secondaryColor text-5xl my-3 md:my-0 md:text-7xl">اعمل كتابك</h1>
-    <p class="textColor text-xl font-bold w-12 md:w-9">"اعمل كتابك" هو تطبيق مميز مصمم لمساعدة الكتّاب والمؤلفين في إيجاد المصحح اللغوي المناسب ومصمم الغلاف المحترف لكتبهم. يهدف التطبيق إلى تسهيل عملية اختيار المصحح اللغوي المناسب الذي يمكنه تحسين اللغة والنحو والإملاء للنصوص بكفاءة عالية.
+    <p class="textColor text-base md:text-xl font-bold w-11 mx-auto md:mx-0 md:w-9">"اعمل كتابك" هو تطبيق مميز مصمم لمساعدة الكتّاب والمؤلفين في إيجاد المصحح اللغوي المناسب ومصمم الغلاف المحترف لكتبهم. يهدف التطبيق إلى تسهيل عملية اختيار المصحح اللغوي المناسب الذي يمكنه تحسين اللغة والنحو والإملاء للنصوص بكفاءة عالية.
       بالإضافة إلى ذلك، يُمكنك من خلال "اعمل كتابك" الوصول إلى مجموعة من المصممين المحترفين لتصميم أغلفة الكتب، حيث يمكنك اختيار والتعامل مع مصمم يساعدك في تصميم غلاف كتابك بشكل جذاب وملهم.
     </p>
     <div class="flex justify-content-center w-9">
@@ -126,10 +126,10 @@ const handleIntersection = (entries : any) => {
 <div style="width: 85%;" class="m-auto">
   <Carousel :value="feedbacks" :numVisible="1" :numScroll="1" orientation="vertical" circular :autoplayInterval="3000" verticalViewPortHeight="500px" contentClass="flex align-items-center">
     <template #item="slotProps">
-      <div class="flex flex-column md:flex-row">
+      <div class="flex flex-column justify-content-center md:flex-row">
         <div>
           <h1 class="secondaryColor text-5xl md:text-7xl p-5">و كان رأيهم عننا...</h1>
-          <h1 class="textColor w-11 px-5">{{ slotProps.data.feedback }}</h1>
+          <h1 class="textColor w-full md:w-11 px-1 md:px-5">{{ slotProps.data.feedback }}</h1>
           <h1 class="secondaryColor my-3 px-5">{{ slotProps.data.author }}</h1>
           <h3 class="px-5 textColor">{{ slotProps.data.jobTitle }}</h3>
         </div>

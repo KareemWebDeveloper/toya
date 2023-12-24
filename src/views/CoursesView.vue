@@ -53,22 +53,22 @@ onMounted(() => {
 <div class="marginRight py-5" style="min-height: 80vh;">
     <section class="p-3 w-full">
         <h1 class="secondaryColor text-5xl my-5 md:text-7xl">اسم الكورس هنا</h1>
-        <div class="flex align-items-center justify-content-between">
-            <img src="../images/course.png" class="w-4 borderRound mx-3" alt="">
-            <div class="p-3 mx-5">
+        <div class="flex flex-column md:flex-row align-items-center justify-content-between">
+            <img src="../images/course.png" class="w-10 md:w-4 borderRound mx-3" alt="">
+            <div class="p-3 mx-0 md:mx-5">
                 <h2 class="secondaryColor mx-3">دورة تنموية عن ادارة المال و الاعمال</h2>
-                <p class="my-5 textColor text-base font-bold w-10">ادارة المال تشكل دورا كبيرا في حياتنا. هي الوصلة الوحيدة التي تؤدي الي نجاح مشروعك و استمرار اعمالك بشكل فعال. في هذه الدورة سنتعلم كيفية ادارة المال و الموارد المتاحة و تسخيرها في خدمة هدفك الموضوع في الخطة. سيقود الدورة باقة من امهر الخبراء الماليين.</p>
+                <p class="my-3 md:my-5 textColor text-base font-bold w-12 md:w-10">ادارة المال تشكل دورا كبيرا في حياتنا. هي الوصلة الوحيدة التي تؤدي الي نجاح مشروعك و استمرار اعمالك بشكل فعال. في هذه الدورة سنتعلم كيفية ادارة المال و الموارد المتاحة و تسخيرها في خدمة هدفك الموضوع في الخطة. سيقود الدورة باقة من امهر الخبراء الماليين.</p>
             </div>
         </div>
 
         <h1 class="secondaryColor  text-5xl my-5 md:text-6xl p-3 my-3 font-bold">المحاضرون</h1>
         <div class="flex flex-wrap align-items-baseline justify-content-center">
-            <div v-for="lecturer in lecturers" class="mx-2">
+            <div v-for="lecturer in lecturers" class="mx-0 md:mx-2">
                 <PersonPartial :size="{ width : 280 , height : 300}" :person="lecturer" />
             </div>
         </div>
         <h1 class="secondaryColor text-5xl my-5 md:text-5xl p-3 my-3 font-bold">ماذا ستتعلم في هذه الدورة؟</h1>
-        <p class="my-5 px-4 textColor text-base font-bold w-10">إدارة المال تعد أحد أهم الجوانب في الحياة الشخصية والأعمال. فهي تلعب دوراً حاسماً في نجاح المشاريع والأعمال بشكل فعّال. يُعتبر فهم كيفية إدارة المال والموارد المتاحة وتوجيهها نحو أهداف محددة أمراً بالغ الأهمية لضمان استدامة النجاح.<br>
+        <p class="my-5 px-4 textColor text-base font-bold w-12 md:w-10">إدارة المال تعد أحد أهم الجوانب في الحياة الشخصية والأعمال. فهي تلعب دوراً حاسماً في نجاح المشاريع والأعمال بشكل فعّال. يُعتبر فهم كيفية إدارة المال والموارد المتاحة وتوجيهها نحو أهداف محددة أمراً بالغ الأهمية لضمان استدامة النجاح.<br>
             <br>
             تأتي الدورات المتخصصة في إدارة المال لتعليم الأساليب والاستراتيجيات التي يمكن للأفراد والشركات اتباعها لتحقيق أهدافهم المالية بشكل فعال ومستدام. تشمل هذه الدورات مجموعة واسعة من المواضيع، بدءاً من مبادئ الإدارة المالية الأساسية، وصولاً إلى تقنيات تحليل الاستثمارات وتخطيط الميزانية وإدارة الديون.
             <br>
@@ -83,11 +83,11 @@ onMounted(() => {
         </p>
 
          <!-- Order Review and Submitting -->
-  <div class="p-3 w-full">
+  <div class="p-1 md:p-3 w-full">
       <h1 class="secondaryColor text-5xl md:text-7xl p-5">اشترك الآن</h1>
-        <div class="flex" style="align-items: stretch;">
-          <div class="mx-5">
-              <div class="p-5 w-30rem borderRound" style="background-color: rgba(255, 255, 255, 0.075);">
+        <div class="flex flex-column md:flex-row" style="align-items: stretch;">
+          <div class="mx-0 md:mx-5 my-3 w-full md:w-max">
+              <div class="p-5 w-full md:w-30rem borderRound" style="background-color: rgba(255, 255, 255, 0.075);">
                   <h2 class="secondaryColor text-3xl md:text-4xl p-5">تفاصيل الطلب</h2>
                   <div class="mt-3">
                       <FormKit prefix-icon="text" type="text" label="الاسم" placeholder="أدخل الاسم" name="username" validation="required|length:3" />
@@ -103,7 +103,7 @@ onMounted(() => {
                   </div>
               </div>  
           </div>
-          <div class="mx-5 p-3 borderRound" style="background-color: rgba(255, 255, 255, 0.075);">
+          <div class="w-full md:w-max mx-0 md:mx-5 p-3 borderRound" style="background-color: rgba(255, 255, 255, 0.075);">
               <h1 class="secondaryColor text-3xl md:text-4xl p-5">حصيلة الطلب</h1>
               <div class="p-3 borderRound flex align-items-center" style="background-color: rgba(255, 255, 255, 0.075);">
                   <img src="../images/course.png" class="mx-2" style="width : 120px;" alt="">
@@ -128,6 +128,9 @@ onMounted(() => {
     color: var(--primary-color) !important;
     margin: 1vh !important;
     font-size: 16px;
+}
+input{
+    color: white !important;
 }
 .formkit-input {
     padding: 1.2rem;

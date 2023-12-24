@@ -203,10 +203,10 @@ const coverDesigners: Person[] = [
                 <BookCategory class="m-3" :category="category.category" :icon="category.icon"></BookCategory>
             </div>
         </div>
-        <div class="w-10 flex justify-content-end ">
-            <div style="z-index: 9999 !important;" @click="chooseWordsCounts = true; chooseBookCategoy = false;" class="w-2 gredientBg text-center p-3 borderRound my-5 py-3 flex justify-content-center cursor-pointer">
+        <div class="w-10 flex justify-content-end align-items-center">
+            <div style="z-index: 9 !important;" @click="chooseWordsCounts = true; chooseBookCategoy = false;" class="w-10rem md:w-2 gredientBg text-center p-3 borderRound my-5 py-3 flex justify-content-center cursor-pointer">
                 <h2>التالي</h2>
-                <span class="material-symbols-outlined mx-3 font-bold text-3xl mt-2">
+                <span class="material-symbols-outlined mx-3 font-bold text-3xl">
                   keyboard_backspace
                 </span>
             </div>
@@ -225,7 +225,7 @@ const coverDesigners: Person[] = [
             <h5 class="underline secondaryColor cursor-pointer" style="margin: 1vh 6vh;">أعرف عدد كلمات كتابي ازاي؟</h5>
         </div>
         <div class="w-10 flex justify-content-end ">
-            <div style="z-index: 9999 !important;" @click="chooseWordsCounts = false; chooseLanguageEditor = true;" class="w-2 gredientBg text-center p-3 borderRound my-5 py-3 flex  align-items-center justify-content-center cursor-pointer">
+            <div style="z-index: 9 !important;" @click="chooseWordsCounts = false; chooseLanguageEditor = true;" class="w-10rem md:w-2 gredientBg text-center p-3 borderRound my-5 py-3 flex  align-items-center justify-content-center cursor-pointer">
                 <h2>التالي</h2>
                 <span class="material-symbols-outlined mx-3 font-bold text-3xl">
                 keyboard_backspace
@@ -236,14 +236,14 @@ const coverDesigners: Person[] = [
 
   <!-- Choose Language Editor -->
   <section v-if="chooseLanguageEditor" class="p-3 w-full">
-        <h1 class="secondaryColor text-5xl md:text-8xl p-5">اختار مصحح لغوي</h1>
-        <div class="flex align-items-baseline mx-5 my-3 px-5">
-            <div v-for="person in languageEditors" @click="push({path : `/providers/${person.id}` , query : {type : 'editor'}})" class="mx-3 cursor-pointer">
+        <h1 class="secondaryColor text-4xl md:text-8xl p-5">اختار مصحح لغوي</h1>
+        <div class="flex flex-wrap md:flex-nowrap justify-content-center align-items-baseline mx-5 my-3 px-5">
+            <div v-for="person in languageEditors" @click="push({path : `/providers/${person.id}` , query : {type : 'editor'}})" class="mx-3  my-2 cursor-pointer">
                 <PersonPartial :person="person" :size="{width : 200 , height : 200}"></PersonPartial>
             </div>
         </div>
         <div class="w-10 flex justify-content-end ">
-            <div style="z-index: 9999 !important;" @click="chooseLanguageEditor = false; chooseCoverType = true;" class="w-2 gredientBg text-center p-3 borderRound my-5 py-3 flex align-items-center justify-content-center cursor-pointer">
+            <div style="z-index: 9 !important;" @click="chooseLanguageEditor = false; chooseCoverType = true;" class="w-10rem md:w-2 gredientBg text-center p-3 borderRound my-5 py-3 flex align-items-center justify-content-center cursor-pointer">
                 <h2>التالي</h2>
                 <span class="material-symbols-outlined mx-3 font-bold text-3xl">
                 keyboard_backspace
@@ -260,16 +260,8 @@ const coverDesigners: Person[] = [
                 <BookCategory class="m-3" :category="category.category" :icon="category.icon"></BookCategory>
             </div>
         </div>
-            <!-- <div class="flex flex-wrap mx-2 my-3">
-                <div @click="chooseCoverType = false; chooseCoverDesigner = true;" v-for="type in BookCoverDesigns" class="mx-3 my-2 h-10rem w-10rem flex flex-column justify-content-center cursor-pointer gredientBg p-3 borderRound">
-                    <span class="material-symbols-outlined my-3 text-center font-bold text-3xl mt-2">
-                        {{ type.icon }}
-                    </span>
-                    <h2 class="text-center">{{ type.category }}</h2>
-                </div>
-            </div> -->
         <div class="w-10 flex justify-content-end ">
-            <div style="z-index: 9999 !important;" @click="chooseCoverType = false; chooseCoverDesigner = true;" class="w-2 gredientBg text-center p-3 borderRound my-5 py-3 flex align-items-center justify-content-center cursor-pointer">
+            <div style="z-index: 9999 !important;" @click="chooseCoverType = false; chooseCoverDesigner = true;" class="w-10rem md:w-2 gredientBg text-center p-3 borderRound my-5 py-3 flex align-items-center justify-content-center cursor-pointer">
                 <h2>التالي</h2>
                 <span class="material-symbols-outlined mx-3 font-bold text-3xl">
                 keyboard_backspace
@@ -280,16 +272,14 @@ const coverDesigners: Person[] = [
 
   <!-- Choose Book Cover Designer -->
   <section v-if="chooseCoverDesigner" class="p-3 w-full">
-        <h1 class="secondaryColor text-5xl md:text-8xl p-5">اختار مصمم للغلاف</h1>
-        <div class="flex align-items-baseline">
-            <div class="flex align-items-baseline mx-5 my-3 px-5">
-                <div v-for="designer in coverDesigners" @click="push({path : `/providers/${designer.id}` , query : {type : 'designer'}})" class="mx-3 cursor-pointer">
+        <h1 class="secondaryColor text-4xl md:text-8xl p-5">اختار مصمم للغلاف</h1>
+            <div class="flex flex-wrap md:flex-nowrap justify-content-center md:justify-content-start align-items-baseline mx-5 my-3 px-5">
+                <div v-for="designer in coverDesigners" @click="push({path : `/providers/${designer.id}` , query : {type : 'designer'}})" class="my-2 mx-3 cursor-pointer">
                     <PersonPartial :person="designer" :size="{width : 180 , height : 200}"></PersonPartial>
                 </div>
             </div>
-        </div>
         <div class="w-10 flex justify-content-end ">
-            <div style="z-index: 9999 !important;" @click="chooseCoverDesigner = false; submitOrder = true;" class="w-2 gredientBg text-center p-3 borderRound my-5 py-3 flex align-items-center justify-content-center cursor-pointer">
+            <div style="z-index: 9999 !important;" @click="chooseCoverDesigner = false; submitOrder = true;" class="w-10rem md:w-2 gredientBg text-center p-3 borderRound my-5 py-3 flex align-items-center justify-content-center cursor-pointer">
                 <h2>التالي</h2>
                 <span class="material-symbols-outlined mx-3 font-bold text-3xl">
                 keyboard_backspace
@@ -301,8 +291,8 @@ const coverDesigners: Person[] = [
 
   <!-- Order Review and Submitting -->
   <section v-if="submitOrder" class="p-3 w-full">
-      <div class="flex align-items-center justify-content-center">
-            <div class="mx-5">
+      <div class="flex flex-column md:flex-row align-items-center justify-content-center">
+            <div class="mx-5 my-3 md:my-0 w-full md:w-max">
                 <h1 class="secondaryColor text-5xl md:text-7xl p-5">اتمام الطلب</h1>
                 <div class="p-5 borderRound" style="background-color: rgba(255, 255, 255, 0.075);">
                     <h2 class="secondaryColor text-3xl md:text-4xl p-5">تفاصيل الطلب</h2>
@@ -320,7 +310,7 @@ const coverDesigners: Person[] = [
                     </div>
                 </div>  
             </div>
-            <div class="mx-5 p-3 borderRound" style="background-color: rgba(255, 255, 255, 0.075);">
+            <div class="mx-5  w-full md:w-max p-3 borderRound" style="background-color: rgba(255, 255, 255, 0.075);">
                 <h1 class="secondaryColor text-3xl md:text-4xl p-5">حصيلة الطلب</h1>
                 <div class="p-3 borderRound flex align-items-center" style="background-color: rgba(255, 255, 255, 0.075);">
                     <AppImage src="emad.png" :size="120" />
@@ -346,6 +336,7 @@ const coverDesigners: Person[] = [
 </div>
 </template>
 <style>
+
 .formkit-label{
     color: var(--primary-color) !important;
     margin: 1vh !important;
@@ -391,6 +382,14 @@ const coverDesigners: Person[] = [
   .marginRight{
     margin-right: 0;
   }
+  .wordsCount{
+    margin: 5vh;
+    margin-bottom: 0;
+    width: 80%;
+    border-radius: 8px;
+    background: linear-gradient(to bottom , rgba(217, 182, 141, 0.20) 0% , rgba(203, 203, 203, 0.20) 100%);
+    font-size: 18px;
+    }
   .justifyCenter{
     justify-content: start;
   }
