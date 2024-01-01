@@ -155,7 +155,7 @@ const handleIntersection = (entries : any) => {
           <PersonPartial :person="person" :size="{width : 200 , height : 200}"></PersonPartial>
       </div>
     </div> -->
-      <div class="marginRight homeSlider">
+      <div class="flex md:hidden marginRight homeSlider">
         <Carousel :value="persons" :numVisible="1" :numScroll="1" orientation="vertical" circular :autoplayInterval="3000" verticalViewPortHeight="5500px" contentClass="flex align-items-center">
           <template #item="slotProps">
             <div class="flex flex-column justify-content-center md:hidden py-5 px-2 textColor text-lg font-bold">
@@ -333,7 +333,7 @@ export default defineComponent({
   max-width: 33rem;
 }
 .p-carousel-items-content {
-  height: 3000px !important;
+  height: 500px !important;
 }
 .testominialsWidth{
   width: 85%;

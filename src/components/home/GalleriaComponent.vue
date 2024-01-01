@@ -16,7 +16,7 @@
                 </div>
             </template>
             <template #thumbnail="slotProps">
-                <div class=" mx-2">
+                <div class="flex mx-2">
                     <PersonPartial :person="slotProps.item" :size="{width : 200 , height : 200}" />
                 </div>
             </template>
@@ -147,9 +147,5 @@ const responsiveOptions = ref([
     outline: none !important;
     background: none !important;
 }
-@media screen and (max-width : 500px) {
-    .p-galleria-thumbnail-container{
-        display: none !important;
-    }    
-}
+
 </style>
