@@ -145,7 +145,7 @@ const handleIntersection = (entries : any) => {
       <HomeSlider />
     </div>
     <!-- Mobile Slider -->
-    <div class="flex flex-column justify-content-center md:hidden py-5 px-2 textColor text-lg font-bold">
+    <!-- <div class="flex flex-column justify-content-center md:hidden py-5 px-2 textColor text-lg font-bold">
       <AppImage class="logo" :size="{ width: 250 }" src="elsan3a.png"></AppImage>
       <div v-html="persons[activePersonIndex].description"></div>
     </div>
@@ -154,8 +154,23 @@ const handleIntersection = (entries : any) => {
        :class="{'desaturate-image' : activePersonIndex != personIndex}">
           <PersonPartial :person="person" :size="{width : 200 , height : 200}"></PersonPartial>
       </div>
+    </div> -->
+      <div class="marginRight homeSlider">
+        <Carousel :value="persons" :numVisible="1" :numScroll="1" orientation="vertical" circular :autoplayInterval="3000" verticalViewPortHeight="5500px" contentClass="flex align-items-center">
+          <template #item="slotProps">
+            <div class="flex flex-column justify-content-center md:hidden py-5 px-2 textColor text-lg font-bold">
+              <AppImage class="logo" :size="{ width: 250 }" src="elsan3a.png"></AppImage>
+              <div v-html="slotProps.data.description"></div>
+            </div>
+            <div class="flex scroll-container mx-auto md:hidden">
+              <div class="mx-3  my-2 cursor-pointer">
+                  <PersonPartial :person="slotProps.data" :size="{width : 200 , height : 200}"></PersonPartial>
+              </div>
+            </div>
+          </template>
+        </Carousel>
+      </div>
     </div>
-  </div>
 
 
   <!-- el san3a main end -->
@@ -175,22 +190,6 @@ const handleIntersection = (entries : any) => {
             <img src="../images/homePage2.png" class="max-w-14rem mx-3 md:mx-1 my-3" alt="">
           </div>
     </div>
-  </div>
-</div>
-
-<!-- Video-Viewer Section -->
-
-<div id="sectionHome2" v-animateonscroll="{ enterClass: 'fadein', leaveClass: 'fadeout' }" class="flex justify-content-center align-items-center animation-duration-1000 animation-ease-in-out">
-  <div class="darkBg py-5">
-    <h1 class="secondaryColor text-7xl text-center">اعرف تويا</h1>
-    <p class="text-center primaryColor">دار النشر "تويا" تعد إحدى الدور النشر البارزة في مصر</p>
-    <div class="flex w-10 justify-content-center my-5 m-auto" style="max-width: 300px !important;">
-      <YouTube
-      src="https://www.youtube.com/watch?v=9MD4lRBusQw" 
-      @ready="onReady" ref="youtube" />
-    </div>
-    <p class="w-10 md:w-8 text-center m-auto textColor font-bold">دار النشر "تويا" تعد إحدى الدور النشر البارزة في مصر والتي حظيت بشهرة واسعة بفضل تعزيزها للمحتوى الثقافي والعلمي من خلال نشر الكتب والأوراق البحثية. تمتاز دار النشر "تويا" بتقديم مجموعة متنوعة وغنية من الإصدارات التي تغطي مختلف المجالات الثقافية والعلمية.
-      تمثلت أهمية دار النشر "تويا" في دورها الكبير في إثراء المكتبات والمجتمع القرائي المصري والعربي عمومًا، من خلال نشر الكتب التي تتنوع بين الأدب الكلاسيكي والحديث، والكتب العلمية والفلسفية، والأبحاث الأكاديمية.</p>
   </div>
 </div>
 
@@ -250,6 +249,22 @@ const handleIntersection = (entries : any) => {
           <img src="../images/warner-booksLogo.png" class="max-w-7rem my-3 md:max-w-12rem mx-2 md:mx-5" alt="">
       </div>
     </div>
+</div>
+
+<!-- Video-Viewer Section -->
+
+<div id="sectionHome2" v-animateonscroll="{ enterClass: 'fadein', leaveClass: 'fadeout' }" class="flex justify-content-center align-items-center animation-duration-1000 animation-ease-in-out">
+  <div class="darkBg py-5">
+    <h1 class="secondaryColor text-7xl text-center">اعرف تويا</h1>
+    <p class="text-center primaryColor">دار النشر "تويا" تعد إحدى الدور النشر البارزة في مصر</p>
+    <div class="flex w-10 justify-content-center my-5 m-auto" style="max-width: 300px !important;">
+      <YouTube
+      src="https://www.youtube.com/watch?v=9MD4lRBusQw" 
+      @ready="onReady" ref="youtube" />
+    </div>
+    <p class="w-10 md:w-8 text-center m-auto textColor font-bold">دار النشر "تويا" تعد إحدى الدور النشر البارزة في مصر والتي حظيت بشهرة واسعة بفضل تعزيزها للمحتوى الثقافي والعلمي من خلال نشر الكتب والأوراق البحثية. تمتاز دار النشر "تويا" بتقديم مجموعة متنوعة وغنية من الإصدارات التي تغطي مختلف المجالات الثقافية والعلمية.
+      تمثلت أهمية دار النشر "تويا" في دورها الكبير في إثراء المكتبات والمجتمع القرائي المصري والعربي عمومًا، من خلال نشر الكتب التي تتنوع بين الأدب الكلاسيكي والحديث، والكتب العلمية والفلسفية، والأبحاث الأكاديمية.</p>
+  </div>
 </div>
 
 </template>
@@ -318,7 +333,7 @@ export default defineComponent({
   max-width: 33rem;
 }
 .p-carousel-items-content {
-  height: 500px !important;
+  height: 3000px !important;
 }
 .testominialsWidth{
   width: 85%;
@@ -344,6 +359,9 @@ export default defineComponent({
   }
   .p-carousel-items-content {
     height: 680px !important;
+  }
+  .homeSlider .p-carousel-items-content {
+    height: 1150px !important;
   }
   .scroll-container {
     overflow-x: auto !important; /* Enable horizontal scrolling */

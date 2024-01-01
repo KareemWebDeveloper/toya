@@ -1,7 +1,8 @@
 
 <template>
     <div class="card">
-        <Galleria :value="persons" :responsiveOptions="responsiveOptions" :numVisible="4" containerStyle="max-width: 100%">
+        <Galleria :value="persons" :responsiveOptions="responsiveOptions" :numVisible="4" :circular="true"  :autoPlay="true" :transitionInterval="2000"
+         containerStyle="max-width: 100%">
             <template #item="slotProps">
                 <div class="flex flex-column md:flex-row justify-content-between align-items-center slider-wrapper">
                     <div class="flex flex-column">
@@ -15,7 +16,7 @@
                 </div>
             </template>
             <template #thumbnail="slotProps">
-                <div class="mx-2">
+                <div class=" mx-2">
                     <PersonPartial :person="slotProps.item" :size="{width : 200 , height : 200}" />
                 </div>
             </template>
@@ -145,5 +146,10 @@ const responsiveOptions = ref([
     align-items: baseline !important;
     outline: none !important;
     background: none !important;
+}
+@media screen and (max-width : 500px) {
+    .p-galleria-thumbnail-container{
+        display: none !important;
+    }    
 }
 </style>
