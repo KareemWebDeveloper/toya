@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {ref ,onMounted } from 'vue'
+import type {Ref} from 'vue'
 import { useRouter } from 'vue-router';
 const { push , currentRoute } = useRouter();
 
@@ -27,12 +28,23 @@ const feedbacks = ref([
     },
 ]);
 
+function changeActivePersonIndex() {
+  activePersonIndex.value++;
+  if(activePersonIndex.value == persons.value.length){
+    activePersonIndex.value = 0
+  }
+}
 onMounted(() => {
   const options = {
     root: null,
     rootMargin: '0px',
     threshold: 0.5, // Adjust this threshold as needed
   };
+
+
+  // Execute myFunction every 2 seconds (2000 milliseconds)
+  const intervalId = setInterval(changeActivePersonIndex, 2500);
+
 
   observer = new IntersectionObserver(handleIntersection, options);
 
@@ -43,7 +55,7 @@ onMounted(() => {
   });
 });
 
-const persons: Person[] = [
+const persons: Ref<Person[]> = ref([
     {
         id: 1,
         name: "شريف الليثي",
@@ -112,7 +124,7 @@ const persons: Person[] = [
                    `
     },
 
-]
+])
 
 const scrollUp = () => {
   window.scrollTo({
@@ -145,18 +157,18 @@ const handleIntersection = (entries : any) => {
       <HomeSlider />
     </div>
     <!-- Mobile Slider -->
-    <!-- <div class="flex flex-column justify-content-center md:hidden py-5 px-2 textColor text-lg font-bold">
+    <div class="flex flex-column justify-content-center md:hidden py-5 px-2 textColor text-lg font-bold">
       <AppImage class="logo" :size="{ width: 250 }" src="elsan3a.png"></AppImage>
       <div v-html="persons[activePersonIndex].description"></div>
     </div>
     <div class="flex scroll-container mx-auto md:hidden">
       <div v-for="(person , personIndex) in persons" class="mx-3  my-2 cursor-pointer" @click="activePersonIndex = personIndex; scrollUp()"
        :class="{'desaturate-image' : activePersonIndex != personIndex}">
-          <PersonPartial :person="person" :size="{width : 200 , height : 200}"></PersonPartial>
+       <PersonPartial :person="person" :size="{width : 200 , height : 200}"></PersonPartial>
       </div>
-    </div> -->
-      <div class="flex md:hidden marginRight homeSlider">
-        <Carousel :value="persons" :numVisible="1" :numScroll="1" orientation="vertical" circular :autoplayInterval="3000" verticalViewPortHeight="5500px" contentClass="flex align-items-center">
+    </div>
+      <!-- <div class="flex md:hidden marginRight homeSlider">
+        <Carousel :value="persons" :numVisible="1" :numScroll="1" orientation="horizontal" verticalViewPortHeight="5500px" contentClass="flex align-items-center">
           <template #item="slotProps">
             <div class="flex flex-column justify-content-center md:hidden py-5 px-2 textColor text-lg font-bold">
               <AppImage class="logo" :size="{ width: 250 }" src="elsan3a.png"></AppImage>
@@ -169,7 +181,7 @@ const handleIntersection = (entries : any) => {
             </div>
           </template>
         </Carousel>
-      </div>
+      </div> -->
     </div>
 
 
