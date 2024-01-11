@@ -3,6 +3,7 @@ import type { PersonPartialProps } from '@/types/types'
 import AppImage from '../app/AppImage.vue';
 import Rating from 'primevue/rating';
 // import AppImage from '@/components/app/AppImage.vue';
+import { onMounted } from 'vue';
 const props = defineProps<PersonPartialProps>()
 const { image,
     name,
@@ -11,7 +12,6 @@ const { image,
     localImage ,
     pricePerJob } = props.person
 </script>
- <!-- zoominleft animation-duration-1000 animation-iteration-1 -->
 <template>
     <div class="person flex flex-column align-items-center  justify-content-center">
         <AppImage :src="props.person.image" :size="props.size" />

@@ -10,11 +10,14 @@ import AnimateOnScroll from 'primevue/animateonscroll';
 import "./assets/theme.css";    
 import { plugin, defaultConfig } from '@formkit/vue'
 import formKitConfig from '../formkit.config'
-
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/css'
 const app = createApp(App)
 
+app.use(VueAwesomeSwiper)
 app.use(plugin, defaultConfig(formKitConfig))              
 app.use(PrimeVue)
+
 app.directive('animateonscroll', AnimateOnScroll);
 app.use(createPinia())
 app.use(router)

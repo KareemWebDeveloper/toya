@@ -6,6 +6,7 @@ const { push , currentRoute } = useRouter();
 
 const sections : any = ref([]);
 const activePersonIndex = ref(0);
+const currentSlide = ref(0);
 let observer : any = null;
 let activeSectionId = '';
 const tabs = ref([
@@ -18,21 +19,18 @@ const tabs = ref([
 const feedbacks = ref([
     { feedback: '“من افضل دور النشر اللي اتعاملنا معاها. حرفية في المعاملة و مواعيد مظبوطة. شكراً تويا”',
       author : 'سلمي طارق',
-      jobTitile : 'كاتبة و مؤلفة',
+      jobTitle : 'كاتبة و مؤلفة',
       image : 'src/images/asmaaB&W.png'
     },
     { feedback: '“من افضل دور النشر اللي اتعاملنا معاها. حرفية في المعاملة و مواعيد مظبوطة. شكراً تويا”',
       author : 'مستشار ثقافي',
-      jobTitile : 'كاتب',
+      jobTitle : 'كاتب',
       image : 'src/images/placeholder1.png'
     },
 ]);
 
-function changeActivePersonIndex() {
-  activePersonIndex.value++;
-  if(activePersonIndex.value == persons.value.length){
-    activePersonIndex.value = 0
-  }
+const slideTo = (val : any) => {
+  currentSlide.value = val
 }
 onMounted(() => {
   const options = {
@@ -40,11 +38,6 @@ onMounted(() => {
     rootMargin: '0px',
     threshold: 0.5, // Adjust this threshold as needed
   };
-
-
-  // Execute myFunction every 2 seconds (2000 milliseconds)
-  const intervalId = setInterval(changeActivePersonIndex, 2500);
-
 
   observer = new IntersectionObserver(handleIntersection, options);
 
@@ -61,7 +54,7 @@ const persons: Ref<Person[]> = ref([
         name: "شريف الليثي",
         image: "sherif.png",
         position: "مؤسس دار تويا للنشر و التوزيع",
-        description: `<p>شريف الليثي، ناشر مصري رائد أسس دار تويا للنشر والتوزيع
+        description: `<p class="text-center md:text-right">شريف الليثي، ناشر مصري رائد أسس دار تويا للنشر والتوزيع
                         عام 2015.
                         يتميز بمساهماته الفعّالة في مجالات الثقافة والأدب والفن، حيث قام بتنظيم العديد من المبادرات التي
                         تعزز التنوع
@@ -70,7 +63,7 @@ const persons: Ref<Person[]> = ref([
                         لتعزيز قيم الفن والمعرفة في مصر وخارجها.
 
                     </p>
-                    <p>
+                    <p class="text-center md:text-right">
                         بفضل رؤيته الرائعة وجهوده المستمرة، ينطلق شريف الليثي لتحقيق تحول هائل في عالم النشر والصناعة
                         الثقافية. من
                         خلال إطلاق "الصنعة"، يقدم الليثي منصة استثنائية توحد جميع احتياجات الصناعة تحت سقف واحد، مما يعزز
@@ -88,11 +81,11 @@ const persons: Ref<Person[]> = ref([
         name: "عماد العادلي",
         image: "emad.png",
         position: "مستشار ثقافي",
-        description: `<p>
+        description: `<p class="text-center md:text-right">
             عماد العادلي، المستشار السابق لمكتبات "ألف" والحالي لمركز الهالة الثقافي، يعتبر رائدًا في عالم الأدب والثقافة. بنقده الدقيق وتفاعله مع 2300 كتاب، أثبت العادلي تميزه في التعامل مع مختلف أنواع الأدب، سواء الروائي أو القصصي أو الفلسفي أو البحثي. يبرز دوره في التواصل مع الأجيال المختلفة، من الستينيات حتى الألفية الجديدة، مما يجسد تفاعله الرائع مع التنوع الثقافي. بفضل خبرته وتفانيه، يترأس العادلي رؤية تجمع بين التراث الأدبي والتطلعات المعاصرة، مما يسهم في تطوير وتنوير المجتمع من خلال مساهمته المميزة.
 
                     </p>
-                    <p>
+                    <p class="text-center md:text-right">
                       بالإضافة إلى دوره الرئيسي في مجال الأدب والثقافة، يتألق عماد العادلي كمدرب ومرشد في دورة "كيف تقرأ ... وماذا تقرأ". كمُحاضِر ملهم ومُرشد ذو خبرة واسعة، يقود العادلي هذه الدورة ببراعة، حيث يشارك مشاركيه في رحلة استكشافية فريدة لعالم الكتب والأفكار. يتفاعل العادلي مع الطلاب بطريقة تشجيعية، يحثهم على فهم أعماق النصوص واستخلاص المعاني العميقة. يقدم في هذه الدورة الأدوات والمهارات الضرورية لفهم الأدب بشكل أفضل والاستفادة القصوى من قراءاتهم. إن دوره كمدرب في هذه الدورة يسهم في بناء جيل من القراء المتميزين والفهم العميق للنصوص الأدبية.
                     </p>`
 
@@ -102,11 +95,11 @@ const persons: Ref<Person[]> = ref([
         name: "شريف سعيد",
         image: "s-sa3eed.png",
         position: "مستشار اقتصادي",
-        description: `<p>
+        description: `<p class="text-center md:text-right">
           شريف سعيد المستشار السابق لمكتبات "ألف" والحالي لمركز الهالة الثقافي، يعتبر رائدًا في عالم الأدب والثقافة. بنقده الدقيق وتفاعله مع 2300 كتاب، أثبت العادلي تميزه في التعامل مع مختلف أنواع الأدب، سواء الروائي أو القصصي أو الفلسفي أو البحثي. يبرز دوره في التواصل مع الأجيال المختلفة، من الستينيات حتى الألفية الجديدة، مما يجسد تفاعله الرائع مع التنوع الثقافي. بفضل خبرته وتفانيه، يترأس العادلي رؤية تجمع بين التراث الأدبي والتطلعات المعاصرة، مما يسهم في تطوير وتنوير المجتمع من خلال مساهمته المميزة.
 
                     </p>
-                    <p>
+                    <p class="text-center md:text-right">
                       بالإضافة إلى دوره الرئيسي في مجال الأدب والثقافة، يتألق عماد العادلي كمدرب ومرشد في دورة "كيف تقرأ ... وماذا تقرأ". كمُحاضِر ملهم ومُرشد ذو خبرة واسعة، يقود العادلي هذه الدورة ببراعة، حيث يشارك مشاركيه في رحلة استكشافية فريدة لعالم الكتب والأفكار. يتفاعل العادلي مع الطلاب بطريقة تشجيعية، يحثهم على فهم أعماق النصوص واستخلاص المعاني العميقة. يقدم في هذه الدورة الأدوات والمهارات الضرورية لفهم الأدب بشكل أفضل والاستفادة القصوى من قراءاتهم. إن دوره كمدرب في هذه الدورة يسهم في بناء جيل من القراء المتميزين والفهم العميق للنصوص الأدبية.
                     </p>`
 
@@ -117,7 +110,7 @@ const persons: Ref<Person[]> = ref([
         name: "اسما علاء الدين",
         image: "asmaa.png",
         position: "كاتبة و طبيبة",
-        description: `<p>الدكتورة أسماء علاء الدين، كاتبة وعالمة نفس، قد انطلقت في عالم الكتابة منذ سن مبكرة، حيث أظهرت موهبتها واهتمامها بالأدب والعلوم الاجتماعية. نالت عضوية في اتحاد كتاب مصر، ومارست الكتابة العلمية والأدبية بتفرد. تتألق الدكتورة أسماء كضيفة على العديد من البرامج الإعلامية، حيث تتحدث بشكل ملهم في مجال تخصصها في علم النفس. بالإضافة إلى ذلك، قامت بتقديم عدة برامج في نفس المجال، مساهمةً في نشر الوعي النفسي والاجتماعي.
+        description: `<p class="text-center md:text-right">الدكتورة أسماء علاء الدين، كاتبة وعالمة نفس، قد انطلقت في عالم الكتابة منذ سن مبكرة، حيث أظهرت موهبتها واهتمامها بالأدب والعلوم الاجتماعية. نالت عضوية في اتحاد كتاب مصر، ومارست الكتابة العلمية والأدبية بتفرد. تتألق الدكتورة أسماء كضيفة على العديد من البرامج الإعلامية، حيث تتحدث بشكل ملهم في مجال تخصصها في علم النفس. بالإضافة إلى ذلك، قامت بتقديم عدة برامج في نفس المجال، مساهمةً في نشر الوعي النفسي والاجتماعي.
 
 تعمل حالياً الدكتورة أسماء علاء الدين كمعالجة نفسية في مستشفيات الشرطة، وتشغل أيضاً منصب عضو في اللجنة النفسية العليا للمجندين بمستشفى الشرطة في الرحاب. صدر لها عشر إصدارات، تنوعت بين الروايات والكتب العلمية في مجال علم النفس. من بين أعمالها المميزة روايات "شمال" و"سيناريو وحوار" و"عاشق البنفسج"، بالإضافة إلى كتاب "مالا نتوقعه" وغيرها. يعتبر كتاب "ملفات سرية من داخل العيادة النفسية" أحدث إصداراتها، حيث تقدم فيه رؤى عميقة حول تحليل النفس والمواضيع النفسية المعاصرة.
                     </p>
@@ -131,6 +124,24 @@ const scrollUp = () => {
     behavior : 'smooth',
     top : 0
   })
+}
+
+const breakpoints = {
+      // 700px and up
+      250: {
+        itemsToShow: 1.2,
+        snapAlign: 'center',
+      },
+      // 700px and up
+      700: {
+        itemsToShow: 3.5,
+        snapAlign: 'center',
+      },
+      // 1024 and up
+      1024: {
+        itemsToShow: 4,
+        snapAlign: 'start',
+}
 }
 
 const handleIntersection = (entries : any) => {
@@ -153,37 +164,39 @@ const handleIntersection = (entries : any) => {
   
   <!-- el san3a main -->
   <div id="section1" class="p-3 flex flex-column md:flex-row justify-content-center">
-    <div class="hidden md:flex slider">
-      <HomeSlider />
-    </div>
     <!-- Mobile Slider -->
-    <div class="flex flex-column justify-content-center md:hidden py-5 px-2 textColor text-lg font-bold">
-      <AppImage class="logo" :size="{ width: 250 }" src="elsan3a.png"></AppImage>
-      <div v-html="persons[activePersonIndex].description"></div>
-    </div>
-    <div class="flex scroll-container mx-auto md:hidden">
-      <div v-for="(person , personIndex) in persons" class="mx-3  my-2 cursor-pointer" @click="activePersonIndex = personIndex; scrollUp()"
-       :class="{'desaturate-image' : activePersonIndex != personIndex}">
-       <PersonPartial :person="person" :size="{width : 200 , height : 200}"></PersonPartial>
+    <div class="flex flex-column">
+      <div class="mx-auto flex md:hidden justify-content-center mt-3">
+        <AppImage class="logo" :size="{ width: 250 }" src="elsan3a.png"></AppImage>
       </div>
-    </div>
-      <!-- <div class="flex md:hidden marginRight homeSlider">
-        <Carousel :value="persons" :numVisible="1" :numScroll="1" orientation="horizontal" verticalViewPortHeight="5500px" contentClass="flex align-items-center">
-          <template #item="slotProps">
-            <div class="flex flex-column justify-content-center md:hidden py-5 px-2 textColor text-lg font-bold">
-              <AppImage class="logo" :size="{ width: 250 }" src="elsan3a.png"></AppImage>
-              <div v-html="slotProps.data.description"></div>
-            </div>
-            <div class="flex scroll-container mx-auto md:hidden">
-              <div class="mx-3  my-2 cursor-pointer">
-                  <PersonPartial :person="slotProps.data" :size="{width : 200 , height : 200}"></PersonPartial>
+        <Carousel :autoplay="3000" :wrap-around="true" v-model="currentSlide" :circular="true" :snapAlign="'center'" :dir="'rtl'" :pauseAutoplayOnHover="true">
+          <Slide v-for="person in persons" :key="person.id">
+            <div class="flex justify-content-center align-items-center my-5 py-1 px-2 textColor text-lg font-bold">
+              <div>
+                <div class="hidden md:flex mt-3">
+                  <AppImage class="logo" :size="{ width: 250 }" src="elsan3a.png"></AppImage>
+                </div>
+                <div class="w-full md:w-11 mx-0 md:mx-4 font-bold text-start" v-html="person.description"></div>
+              </div>
+              <div class="hidden md:flex text-base" style="color: black;">
+                <PersonPartial :key="person.id" :size="{ width : 300 , height : 300}" :person="person" />
               </div>
             </div>
+          </Slide>
+        </Carousel>
+        <Carousel :breakpoints="breakpoints" v-model="currentSlide" :circular="true" :snapAlign="'center'" :dir="'rtl'" :pauseAutoplayOnHover="true">
+          <Slide v-for="(person , personIndex) in persons" :key="person.id">
+            <div class="mx-3  my-2 cursor-pointer" @click="slideTo(personIndex); scrollUp()"
+            :class="{'desaturate-image' : currentSlide != personIndex}">
+            <PersonPartial :person="person" :size="{width : 200 , height : 200}"></PersonPartial>
+           </div>
+          </Slide>
+          <template #addons>
+            <Pagination />
           </template>
         </Carousel>
-      </div> -->
     </div>
-
+    </div>
 
   <!-- el san3a main end -->
 
@@ -226,18 +239,18 @@ const handleIntersection = (entries : any) => {
 <div id="sectionHome3" v-animateonscroll="{ enterClass: 'fadein', leaveClass: 'fadeout' }" class="flex justify-content-center align-items-center animation-duration-1000 animation-ease-in-out py-5 my-5">
 <div class="darkBg py-5">
 <div class="marginRight testominialsWidth">
-  <Carousel :value="feedbacks" :numVisible="1" :numScroll="1" orientation="vertical" circular :autoplayInterval="3000" verticalViewPortHeight="500px" contentClass="flex align-items-center">
-    <template #item="slotProps">
+  <Carousel :autoplay="3000" :wrap-around="true" :circular="true" :snapAlign="'center'" :dir="'rtl'" :pauseAutoplayOnHover="true">
+    <Slide v-for="(feedback , index) in feedbacks" :key="index">
       <div class="flex flex-column justify-content-center md:flex-row">
         <div>
           <h1 class="secondaryColor text-center md:text-right text-4xl md:text-7xl p-5">و كان رأيهم عننا...</h1>
-          <h1 class="textColor text-center md:text-right w-full md:w-11 px-1 md:px-5">{{ slotProps.data.feedback }}</h1>
-          <h1 class="secondaryColor text-center md:text-right my-3 px-5">{{ slotProps.data.author }}</h1>
-          <h3 class="px-5 text-center md:text-right textColor">{{ slotProps.data.jobTitle }}</h3>
+          <h1 class="textColor text-center md:text-right w-full md:w-11 px-1 md:px-5">{{ feedback.feedback }}</h1>
+          <h1 class="secondaryColor text-center md:text-right my-3 px-5">{{ feedback.author }}</h1>
+          <h3 class="px-5 text-center md:text-right textColor">{{ feedback.jobTitle }}</h3>
         </div>
-        <img :src="slotProps.data.image" class="maxWidth mx-auto md:mx-0" alt="">
+        <img :src="feedback.image" class="maxWidth mx-auto md:mx-0" alt="">
       </div>
-    </template>
+    </Slide>
   </Carousel>
 </div>
 </div>
@@ -284,15 +297,21 @@ const handleIntersection = (entries : any) => {
 import { defineComponent } from 'vue'
 import YouTube from 'vue3-youtube'
 import TabView from 'primevue/tabview';
+import 'vue3-carousel/dist/carousel.css'
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import TabPanel from 'primevue/tabpanel';
-import HomeSlider from '@/components/home/HomeSlider.vue';
+// import HomeSlider from '@/components/home/HomeSlider.vue';
 import AppImage from '@/components/app/AppImage.vue';
-import Carousel from 'primevue/carousel';
 import type { Person } from '@/types/types';
 import PersonPartial from '@/components/partials/PersonPartial.vue';
 
 export default defineComponent({
-    components: { YouTube },
+    components: { YouTube ,
+    Carousel,
+    Slide,
+    Pagination,
+    Navigation,
+    },
     methods: {
         onReady() {
             this.$refs.youtube.playVideo()
@@ -385,69 +404,3 @@ export default defineComponent({
   }
 }
 </style>
-
-
-<!-- <div class="w-full md:w-12 zoominright animation-duration-1000 animation-iteration-1">
-      <img src="../images/elsan3a.png" class="max-w-12rem md:max-w-16rem flex mx-auto md:mx-0 my-5 md:my-0" alt="">
-      <h2 class="secondaryColor"><span class="textColor">من</span> المتحدثين بالورشة</h2>
-      <div class="flex my-3">
-        <div class="flex align-items-center">
-          <span class="material-symbols-outlined textColor text-3xl">
-            calendar_month
-          </span>
-          <h4 class="textColor mx-2">١٩ نوفمبر ٢٠٢٣</h4>
-        </div>
-        <div class="flex align-items-center mx-2">
-          <span class="material-symbols-outlined mx-2 textColor text-3xl">
-            timer
-          </span>
-          <h4 class="textColor">٩ صباحاً</h4>
-        </div>
-      </div>
-      <p class="textColor w-full font-bold">تهدف الورشة لاستخراج المواهب المدفونة من قبل 
-        متخصصين و خبراء للمساهمة في تقدم الحرف في البلاد و اتاحة فرص اكثر للشباب. 
-        تحتوي الصنعة علي عدة فقرات مفيدة و تتبع منهج علمي في الانتقاء و التوجيه. 
-        شارك معنا باقة من امهر الخبراء و الحرفيين لتتكون الصورة الكاملة للصنعة...
-        </p>
-        <h2 class="w-5 my-3 cursor-pointer gredientBg text-center p-3 borderRound">سجل الآن</h2>
-    </div>
-    <div class="hidden md:flex flex-column align-items-center w-10 justify-content-center zoominleft animation-duration-1000 animation-iteration-1">
-      <img src="../images/asmaa.png" class="w-9 mx-5" alt="">
-      <div class="py-2 px-5 borderRound w-8" style="background-color: #D9B58D;">
-        <h1 class="">أسماء الراشدي</h1>
-        <h4 class="">مسئولة الشباب</h4>
-      </div>
-    </div> -->
-
-
-      <!-- <div class="zoomin animation-duration-1000 animation-iteration-1" style="margin-bottom: 10vh;">
-    <h2 class="textColor p-3">باقي المتحدثين</h2>
-    <div class="flex scroll-container flex-nowrap md:flex-wrap w-full m-auto justifyCenter">
-      <img src="../images/asmaa.png" class="flex md:hidden max-w-30rem max-h-17rem" alt="">
-      <img src="../images/Group 4.png" class="max-w-20rem max-h-17rem" alt="">
-      <img src="../images/Group 1.png" class="max-w-20rem max-h-17rem" alt="">
-      <img src="../images/Group 2.png" class="max-w-20rem max-h-17rem" alt="">
-      <img src="../images/Group 3.png" class="max-w-20rem max-h-17rem" style="margin: 0 4rem;" alt="">
-    </div>
-    <div class="flex flex-column text-center md:hidden py-2 px-5 borderRound" style="background-color: #D9B58D;">
-      <h1 class="">أسماء الراشدي</h1>
-      <h4 class="">مسئولة الشباب</h4>
-    </div>
-  </div> -->
-
-              <!-- <img src="../images/elsan3a.png" class="my-5 flex mx-auto md:mx-0 max-w-16rem" alt="">
-            <h1 class="secondaryColor">نبذة عنا</h1>
-            <div class="borderRound mb-2 mt-1 secondaryBg" style="height: 0.5rem;"></div>
-            <div class="flex align-items-center">
-              <div class="hidden md:flex flex-column">
-                <h2 class="my-5 inactiveColor cursor-pointer">الرؤية</h2>
-                <h2 class="my-5 inactiveColor cursor-pointer">المهمة</h2>
-                <h2 class="my-5 inactiveColor cursor-pointer">القيم</h2>
-              </div>
-              <h3 class="font-bold textColor my-3 mx-2 md:mx-5">
-                الصنعة هي مبادرة تعليمية تهدف إلى تدريب وتطوير مهارات الحرفيين في مختلف المجالات والصناعات اليدوية. تتميز هذه الورشة بمشاركة عدد كبير من الخبراء والمحترفين المتميزين في مجالات متنوعة، مما يسهم في تقديم تجارب وخبرات متنوعة وقيمة للمشاركين.
-                يتم تنظيم ورشة الصنعة بشكل دوري أو عند الطلب، وتشمل مجموعة واسعة من المواضيع مثل النجارة، والخياطة، والفنون التقليدية، والحرف اليدوية المتنوعة مثل الخزف، النحت، النسيج، والأعمال الحرفية الأخرى.<br><br>
-                
-                باختصار، تُعد "الصنعة" بيئة تعليمية مثالية لتنمية وتطوير مهارات الحرفيين وصقل مواهبهم من خلال تجارب عملية وتوجيهات خبراء متميزين في مجالاتهم.
-              </h3>
-            </div> -->
